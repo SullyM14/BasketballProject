@@ -18,6 +18,6 @@
         <Label x:Name="ReboundsLabel" Content="Rebounds Per Game" FontSize="24" HorizontalAlignment="Left" Margin="306,371,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
         <Label x:Name="AssistsLabel" Content="Assists Per Game" FontSize="24" HorizontalAlignment="Left" Margin="309,308,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
         <Label x:Name="PointsLabel" Content="Points Per Game" FontSize="24" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
-        <Button x:Name="AddPlayerButton" FontSize="24" Content="Add Player" HorizontalAlignment="Left" Margin="695,155,0,0" VerticalAlignment="Top" Click="AddPlayerButton_Click" Height="31" Width="74" Visibility="Collapsed"/>
+        <Button x:Name="AddPlayerButton" Content="Add Player" HorizontalAlignment="Left" Margin="695,155,0,0" VerticalAlignment="Top" Click="AddPlayerButton_Click" Height="31" Width="74" Visibility="Collapsed"/>
     </Grid>
 </Window>

@@ -3,6 +3,7 @@ using BasketballBusinessLayer;
 using BasketballProject;
 using System.Linq;
 using System.Data.Common;
+using System;
 
 namespace BasketballTests
 {
@@ -25,12 +26,12 @@ namespace BasketballTests
                     where p.TeamId == 2
                     select p;
 
-                var selectedTeam = new Nbateams{NbateamId = 2};
+                var selectedTeam = new Nbateams { NbateamId = 2 };
                 var retrievePlayersRun = _crudManager.RetrieveTeamPlayers(selectedTeam).Count();
                 var countExpectedPlayers = numberOfPlayersForLakers.Count();
 
                 Assert.AreEqual(countExpectedPlayers, retrievePlayersRun);
-            
+
             }
         }
 
@@ -48,14 +49,14 @@ namespace BasketballTests
                 var retrieveUserTeamPlayers = _crudManager.RetrieveUserTeams().Count();
 
                 Assert.AreEqual(playersInTeam.Count(), retrieveUserTeamPlayers);
-                
+
             }
         }
 
         [Test]
         public void WhenAskedForNBATeams_AllNBATeamsAreShown()
         {
-            using(var db = new BasketballProjectContext())
+            using (var db = new BasketballProjectContext())
             {
                 var numberOfTeams = db.Nbateams.Count();
                 var retrieveNBATeams = _crudManager.RetrieveNbaTeams().Count();
@@ -67,9 +68,9 @@ namespace BasketballTests
         [Test]
         public void WhenSelectedPlayer_CorrectDetailsSelected()
         {
-            using(var db = new BasketballProjectContext())
+            using (var db = new BasketballProjectContext())
             {
-                var selectedPlayer = new Players {PlayerId = 1, FirstName = "Stephen", LastName = "Curry"};
+                var selectedPlayer = new Players { PlayerId = 1, FirstName = "Stephen", LastName = "Curry" };
                 var player =
                     from p in db.Players
                     where p.PlayerId == selectedPlayer.PlayerId
@@ -83,6 +84,13 @@ namespace BasketballTests
                 Assert.AreEqual(playerName, name);
             }
 
+        }
+   
+        [Test]
+        [Ignore("Feature not completely Implmented yet")]
+        public void WhenANewPlayerIsAddedToTheTeam_TheNumberOfPlayersInTheTeamIsIncreasedByOne()
+        {
+            throw new NotImplementedException();
         }
     }
 }
