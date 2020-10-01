@@ -82,5 +82,26 @@ namespace BasketballBusinessLayer
         {
             SelectedPlayers = (Players)selectedItem;
         }
+
+        public void AddPlayerToUserTeam(object selectedItem)
+        {
+            using(var db = new BasketballProjectContext())
+            {
+                SetSelectedPlayer(selectedItem);
+
+                var searchForPlayers=
+                    from UserTeamPlayers in db.UserTeamPlayers
+                    where (UserTeamPlayers.UserTeamId == SelectedUserTeam.UserTeamId) && (UserTeamPlayers.PlayerId == SelectedPlayers.PlayerId)
+                    select UserTeamPlayers;
+
+                var isPlayerAlreadyInTeam = searchForPlayers.Count();
+
+                if (isPlayerAlreadyInTeam != 1)
+                {
+                    db.Add(new UserTeamPlayers {UserTeamId = SelectedUserTeam.UserTeamId, PlayerId = SelectedPlayers.PlayerId });
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

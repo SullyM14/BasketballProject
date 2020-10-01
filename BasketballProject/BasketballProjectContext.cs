@@ -86,8 +86,6 @@ namespace BasketballProject
 
             modelBuilder.Entity<UserTeamPlayers>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.HasOne(d => d.Player)
                     .WithMany(p => p.UserTeamPlayers)
                     .HasForeignKey(d => d.PlayerId)

@@ -82,14 +82,20 @@ namespace BasketballFrontEnd
             ReboundsLabel.Visibility = Visibility.Visible;
             AssistsLabel.Visibility = Visibility.Visible;
             PointsLabel.Visibility = Visibility.Visible;
-
-
-            //throw new NotImplementedException();
+            AddPlayerButton.Visibility = Visibility.Visible;
         }
 
         private void ListBoxUserTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeams();
+        }
+
+        private void AddPlayerButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListBoxNbaPlayers.SelectedItem != null)
+            {
+                _crud.AddPlayerToUserTeam(ListBoxNbaPlayers.SelectedItem);
+            }
         }
     }
 }
