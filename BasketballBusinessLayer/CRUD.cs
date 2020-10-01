@@ -65,8 +65,6 @@ namespace BasketballBusinessLayer
                     where uTeam.UserId == SelectedUser.UserId
                     select uTeam;
 
-                //setSelectedUserTeam(userTeam) Needs fixing
-
                 SelectedUserTeam = userTeam.FirstOrDefault();
 
 
@@ -78,6 +76,11 @@ namespace BasketballBusinessLayer
 
                 return fantasyPlayers.ToList();
             }
+        }
+
+        public void SetSelectedPlayer(object selectedItem)
+        {
+            SelectedPlayers = (Players)selectedItem;
         }
     }
 }

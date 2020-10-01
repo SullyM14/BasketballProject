@@ -63,5 +63,26 @@ namespace BasketballTests
 
             }
         }
+
+        [Test]
+        public void WhenSelectedPlayer_CorrectDetailsSelected()
+        {
+            using(var db = new BasketballProjectContext())
+            {
+                var selectedPlayer = new Players {PlayerId = 1, FirstName = "Stephen", LastName = "Curry"};
+                var player =
+                    from p in db.Players
+                    where p.PlayerId == selectedPlayer.PlayerId
+                    select p;
+
+                var playerName = player.FirstOrDefault().FirstName;
+
+                _crudManager.SetSelectedPlayer(selectedPlayer);
+                var name = _crudManager.SelectedPlayers.FirstName;
+
+                Assert.AreEqual(playerName, name);
+            }
+
+        }
     }
 }

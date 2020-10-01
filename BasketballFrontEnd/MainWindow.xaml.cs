@@ -51,7 +51,40 @@ namespace BasketballFrontEnd
 
         private void ListBoxNbaPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (ListBoxNbaPlayers.SelectedItem != null)
+            {
+                _crud.SetSelectedPlayer(ListBoxNbaPlayers.SelectedItem);
+                MakePlayerFieldsVisible();
+                PopulatePlayerFields();
+            }
+        }
+
+        private void PopulatePlayerFields()
+        {
+            if (_crud.SelectedPlayers != null) {
+                TextPlayerName.Text = _crud.SelectedPlayers.ToString();
+                TextPPG.Text = _crud.SelectedPlayers.Ppg.ToString();
+                TextAPG.Text = _crud.SelectedPlayers.Apg.ToString();
+                TextRPG.Text = _crud.SelectedPlayers.Rpg.ToString();
+            }
+        }
+
+        private void MakePlayerFieldsVisible()
+        {
+            //Collapse the user team fields
+            ListBoxUserTeams.Visibility = Visibility.Collapsed;
+            TitleMyTeam.Visibility = Visibility.Collapsed;
+            //Make player details fields visible
+            TextPlayerName.Visibility = Visibility.Visible;
+            TextPPG.Visibility = Visibility.Visible;
+            TextAPG.Visibility = Visibility.Visible;
+            TextRPG.Visibility = Visibility.Visible;
+            ReboundsLabel.Visibility = Visibility.Visible;
+            AssistsLabel.Visibility = Visibility.Visible;
+            PointsLabel.Visibility = Visibility.Visible;
+
+
+            //throw new NotImplementedException();
         }
 
         private void ListBoxUserTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)

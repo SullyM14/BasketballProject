@@ -10,6 +10,13 @@
         <ListBox x:Name="ListBoxNbaTeams" Grid.Column="0" SelectionChanged="ListBoxNbaTeams_SelectionChanged" Margin="0,0,508,0"/>
         <ListBox x:Name="ListBoxNbaPlayers" Grid.Column="0" SelectionChanged="ListBoxNbaPlayers_SelectionChanged" Margin="298,0,0,290"/>
         <ListBox x:Name="ListBoxUserTeams" Grid.Column="0" SelectionChanged="ListBoxUserTeams_SelectionChanged"  Margin="297,191,0,0"/>
-        <Label Content="My Team" FontSize="24" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="353,144,0,0" VerticalAlignment="Top" Width="342"/>
+        <Label Name="TitleMyTeam"  Content="My Team" FontSize="24" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="353,144,0,0" VerticalAlignment="Top" Width="342"/>
+        <TextBox x:Name="TextPlayerName" FontSize="24" HorizontalAlignment="Left" Margin="460,170,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Collapsed" IsEnabled="False"/>
+        <TextBox x:Name="TextPPG" FontSize="24" HorizontalAlignment="Left" Margin="577,247,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Collapsed" IsEnabled="False"/>
+        <TextBox x:Name="TextAPG" FontSize="24" HorizontalAlignment="Left" Margin="577,308,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Collapsed" IsEnabled="False"/>
+        <TextBox x:Name="TextRPG"  FontSize="24" HorizontalAlignment="Left" Margin="577,368,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Collapsed" IsEnabled="False"/>
+        <Label x:Name="ReboundsLabel" Content="Rebounds Per Game" FontSize="24" HorizontalAlignment="Left" Margin="306,371,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
+        <Label x:Name="AssistsLabel" Content="Assists Per Game" FontSize="24" HorizontalAlignment="Left" Margin="309,308,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
+        <Label x:Name="PointsLabel" Content="Points Per Game" FontSize="24" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
     </Grid>
 </Window>
