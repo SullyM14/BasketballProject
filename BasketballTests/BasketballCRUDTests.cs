@@ -15,6 +15,14 @@ namespace BasketballTests
         public void Setup()
         {
             _crudManager = new CRUD();
+            using (var db = new BasketballProjectContext())
+           {
+                object selectedTeam = new UserTeams { UserTeamId = 1, UserId = 1 };
+                _crudManager.setSelectedUserTeam(selectedTeam);
+                object selectedItem = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James" };
+                _crudManager.AddPlayerToUserTeam(selectedItem);
+                //Need to Remove Anthony Davis if he exists using remove method in CRUDManager, 
+            }
         }
 
         [Test]
@@ -70,7 +78,7 @@ namespace BasketballTests
         {
             using (var db = new BasketballProjectContext())
             {
-                var selectedPlayer = new Players { PlayerId = 1, FirstName = "Stephen", LastName = "Curry" };
+                var selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James" };
                 var player =
                     from p in db.Players
                     where p.PlayerId == selectedPlayer.PlayerId
@@ -87,10 +95,34 @@ namespace BasketballTests
         }
    
         [Test]
-        [Ignore("Feature not completely Implmented yet")]
+        //[Ignore("Feature not completely Implmented yet")]
         public void WhenANewPlayerIsAddedToTheTeam_TheNumberOfPlayersInTheTeamIsIncreasedByOne()
         {
-            throw new NotImplementedException();
+            using(var db = new BasketballProjectContext())
+            {
+                var getPlayers = _crudManager.RetrieveUserTeams();
+                var numberOfPlayersBefore = getPlayers.Count();
+                object selectedItem = new Players { PlayerId = 3, FirstName = "Anthony", LastName = "Davis" };
+                _crudManager.AddPlayerToUserTeam(selectedItem);
+                var getPlayers2 = _crudManager.RetrieveUserTeams();
+                var numberOfPlayersAfter = getPlayers2.Count();
+                Assert.AreEqual(numberOfPlayersBefore + 1, numberOfPlayersAfter);
+            }
+        }
+
+        [Test]
+        public void WhenTryingToAddANewPlayerThatIsAlreadyinTeam_NumberOfPlayersDoesNotChange()
+        {
+            using (var db = new BasketballProjectContext())
+            {
+                var getPlayers = _crudManager.RetrieveUserTeams();
+                var numberOfPlayersBefore = getPlayers.Count();
+                object selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James" };
+                _crudManager.AddPlayerToUserTeam(selectedPlayer);
+                var getPlayers2 = _crudManager.RetrieveUserTeams();
+                var numberOfPlayersAfter = getPlayers2.Count();
+                Assert.AreEqual(numberOfPlayersBefore, numberOfPlayersAfter);
+            }
         }
     }
 }
