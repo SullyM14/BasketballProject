@@ -75,6 +75,7 @@ namespace BasketballFrontEnd
             ListBoxUserTeams.Visibility = Visibility.Collapsed;
             TitleMyTeam.Visibility = Visibility.Collapsed;
             //Make player details fields visible
+            MyTeamButton.Visibility = Visibility.Visible;
             TextPlayerName.Visibility = Visibility.Visible;
             TextPPG.Visibility = Visibility.Visible;
             TextAPG.Visibility = Visibility.Visible;
@@ -96,6 +97,30 @@ namespace BasketballFrontEnd
             {
                 _crud.AddPlayerToUserTeam(ListBoxNbaPlayers.SelectedItem);
             }
+        }
+
+        private void MyTeamButton_Click(object sender, RoutedEventArgs e)
+        {
+            PopulateUserTeam();
+            MakeMyTeamFieldsVisible();
+
+        }
+
+        private void MakeMyTeamFieldsVisible()
+        {
+            //Collapse player details fields
+            MyTeamButton.Visibility = Visibility.Collapsed;
+            TextPlayerName.Visibility = Visibility.Collapsed;
+            TextPPG.Visibility = Visibility.Collapsed;
+            TextAPG.Visibility = Visibility.Collapsed;
+            TextRPG.Visibility = Visibility.Collapsed;
+            ReboundsLabel.Visibility = Visibility.Collapsed;
+            AssistsLabel.Visibility = Visibility.Collapsed;
+            PointsLabel.Visibility = Visibility.Collapsed;
+            AddPlayerButton.Visibility = Visibility.Collapsed;
+            //Make the user team fields visible
+            ListBoxUserTeams.Visibility = Visibility.Visible;
+            TitleMyTeam.Visibility = Visibility.Visible;
         }
     }
 }

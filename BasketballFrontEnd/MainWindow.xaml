@@ -19,5 +19,6 @@
         <Label x:Name="AssistsLabel" Content="Assists Per Game" FontSize="24" HorizontalAlignment="Left" Margin="309,308,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
         <Label x:Name="PointsLabel" Content="Points Per Game" FontSize="24" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
         <Button x:Name="AddPlayerButton" Content="Add Player" HorizontalAlignment="Left" Margin="695,155,0,0" VerticalAlignment="Top" Click="AddPlayerButton_Click" Height="31" Width="74" Visibility="Collapsed"/>
+        <Button x:Name="MyTeamButton" Content="My Team" FontSize ="18" HorizontalAlignment="Left" Margin="298,153,0,0" VerticalAlignment="Top" Click="MyTeamButton_Click" Visibility="Collapsed"/>
     </Grid>
 </Window>
