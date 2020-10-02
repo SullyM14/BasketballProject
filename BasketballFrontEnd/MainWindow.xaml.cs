@@ -59,6 +59,7 @@ namespace BasketballFrontEnd
             {
                 _crud.SetSelectedPlayer(ListBoxNbaPlayers.SelectedItem);
                 MakePlayerFieldsVisible();
+                RemoveOrAddPlayerVisibleCheck(ListBoxNbaPlayers.SelectedItem);
                 PopulatePlayerFields();
             }
         }
@@ -73,14 +74,11 @@ namespace BasketballFrontEnd
             }
         }
 
-        private void MakePlayerFieldsVisible()
+        public void RemoveOrAddPlayerVisibleCheck(object selectedItem) 
         {
-            //Collapse the user team fields
-            ListBoxUserTeams.Visibility = Visibility.Collapsed;
-            TitleMyTeam.Visibility = Visibility.Collapsed;
-            //Make player details fields visible
             //Check if player is already in team
-            if (_crud.IsPlayerInTeam(ListBoxNbaPlayers.SelectedItem)){
+            if (_crud.IsPlayerInTeam(selectedItem))
+            {
                 RemoveButton.Visibility = Visibility.Visible;
                 AddPlayerButton.Visibility = Visibility.Collapsed;
             }
@@ -89,6 +87,13 @@ namespace BasketballFrontEnd
                 AddPlayerButton.Visibility = Visibility.Visible;
                 RemoveButton.Visibility = Visibility.Collapsed;
             }
+        }
+        private void MakePlayerFieldsVisible()
+        {
+            //Collapse the user team fields
+            ListBoxUserTeams.Visibility = Visibility.Collapsed;
+            TitleMyTeam.Visibility = Visibility.Collapsed;
+            //Make player details fields visible
             MyTeamButton.Visibility = Visibility.Visible;
             TextPlayerName.Visibility = Visibility.Visible;
             TextPPG.Visibility = Visibility.Visible;
@@ -99,10 +104,16 @@ namespace BasketballFrontEnd
             PointsLabel.Visibility = Visibility.Visible;
         }
 
-        //private void ListBoxUserTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeamsPlayers();
-        //}
+        private void ListBoxUserTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListBoxUserTeams.SelectedItem != null)
+            {
+                _crud.SetSelectedPlayer(ListBoxUserTeams.SelectedItem);
+                MakePlayerFieldsVisible();
+                RemoveOrAddPlayerVisibleCheck(ListBoxUserTeams.SelectedItem);
+                PopulatePlayerFields();
+            }
+        }
 
         private void AddPlayerButton_Click(object sender, RoutedEventArgs e)
         {
@@ -159,6 +170,7 @@ namespace BasketballFrontEnd
                 ListBoxSelectTeams.Visibility = Visibility.Collapsed;
                 MakeMyTeamFieldsVisible();
             }
+
         }
 
         //private void NewTeamButton_Click(object sender, RoutedEventArgs e)
