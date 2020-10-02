@@ -14,6 +14,7 @@ namespace BasketballProject
         public string TeamName { get; set; }
         public int? Wins { get; set; }
         public int? Losses { get; set; }
+        public string Conference { get; set; }
 
         public virtual ICollection<Players> Players { get; set; }
     }

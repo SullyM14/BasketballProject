@@ -35,13 +35,13 @@ namespace BasketballProject
             modelBuilder.Entity<Nbateams>(entity =>
             {
                 entity.HasKey(e => e.NbateamId)
-                    .HasName("PK__NBATeams__B5C90A5C116F8E78");
+                    .HasName("PK__tmp_ms_x__B5C90A5CA78F9230");
 
                 entity.ToTable("NBATeams");
 
-                entity.Property(e => e.NbateamId)
-                    .HasColumnName("NBATeamId")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.NbateamId).HasColumnName("NBATeamId");
+
+                entity.Property(e => e.Conference).HasMaxLength(50);
 
                 entity.Property(e => e.TeamName)
                     .IsRequired()
@@ -51,9 +51,7 @@ namespace BasketballProject
             modelBuilder.Entity<Players>(entity =>
             {
                 entity.HasKey(e => e.PlayerId)
-                    .HasName("PK__Players__4A4E74C8502003D0");
-
-                entity.Property(e => e.PlayerId).ValueGeneratedNever();
+                    .HasName("PK__tmp_ms_x__4A4E74C806DD4D1E");
 
                 entity.Property(e => e.Apg)
                     .HasColumnName("APG")
@@ -64,6 +62,10 @@ namespace BasketballProject
                     .HasMaxLength(50);
 
                 entity.Property(e => e.LastName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Position)
                     .IsRequired()
                     .HasMaxLength(50);
 
@@ -102,9 +104,7 @@ namespace BasketballProject
             modelBuilder.Entity<UserTeams>(entity =>
             {
                 entity.HasKey(e => e.UserTeamId)
-                    .HasName("PK__UserTeam__9ADF80B27F053A00");
-
-                entity.Property(e => e.UserTeamId).ValueGeneratedNever();
+                    .HasName("PK__tmp_ms_x__9ADF80B25A75C563");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.UserTeams)
@@ -116,9 +116,7 @@ namespace BasketballProject
             modelBuilder.Entity<Users>(entity =>
             {
                 entity.HasKey(e => e.UserId)
-                    .HasName("PK__Users__1788CC4C8B8FB60B");
-
-                entity.Property(e => e.UserId).ValueGeneratedNever();
+                    .HasName("PK__tmp_ms_x__1788CC4CADAB4A6B");
 
                 entity.Property(e => e.FirstName)
                     .IsRequired()

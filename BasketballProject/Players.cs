@@ -22,6 +22,7 @@ namespace BasketballProject
         public int? Assists { get; set; }
         public int TeamId { get; set; }
         public int? GamesPlayed { get; set; }
+        public string Position { get; set; }
 
         public virtual Nbateams Team { get; set; }
         public virtual ICollection<UserTeamPlayers> UserTeamPlayers { get; set; }
