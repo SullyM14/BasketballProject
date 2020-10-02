@@ -48,6 +48,25 @@ namespace BasketballTests
         }
 
         [Test]
+        public void WhenStartedCorrectChoicesOfUserTeamsIsShown()
+        {
+            using (var db = new BasketballProjectContext())
+            {
+                var selectedUser = new Users { UserId = 1 };
+                var userTeams =
+                    from p in db.UserTeams
+                    where p.UserId == selectedUser.UserId
+                    select p;
+
+                var numberOfTeams = userTeams.Count();
+
+                var actual = _crudManager.AllUserTeams().Count();
+
+                Assert.AreEqual(numberOfTeams, actual);
+            }
+        }
+
+        [Test]
         public void WhenAFanatasyTeamIsRetrieved_CorrectNumberOfPLayerShown()
         {
             using (var db = new BasketballProjectContext())
@@ -58,7 +77,8 @@ namespace BasketballTests
                     where p.UserTeamId == selectedUserTeam.UserTeamId
                     select p;
 
-                var retrieveUserTeamPlayers = _crudManager.RetrieveUserTeams().Count();
+                object selectedItem = new UserTeams { UserId = 1, UserTeamId = 1 };
+                var retrieveUserTeamPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedItem).Count();
 
                 Assert.AreEqual(playersInTeam.Count(), retrieveUserTeamPlayers);
 
@@ -104,11 +124,12 @@ namespace BasketballTests
         {
             using(var db = new BasketballProjectContext())
             {
-                var getPlayers = _crudManager.RetrieveUserTeams();
+               object selectedUserTeam = new UserTeams { UserId = 1, UserTeamId = 1 };
+                var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
                 object selectedItem = new Players { PlayerId = 3, FirstName = "Anthony", LastName = "Davis" };
                 _crudManager.AddPlayerToUserTeam(selectedItem);
-                var getPlayers2 = _crudManager.RetrieveUserTeams();
+                var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();
                 Assert.AreEqual(numberOfPlayersBefore + 1, numberOfPlayersAfter);
             }
@@ -119,11 +140,12 @@ namespace BasketballTests
         {
             using (var db = new BasketballProjectContext())
             {
-                var getPlayers = _crudManager.RetrieveUserTeams();
+                object selectedUserTeam = new UserTeams { UserId = 1, UserTeamId = 1 };
+                var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
                 object selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James" };
                 _crudManager.AddPlayerToUserTeam(selectedPlayer);
-                var getPlayers2 = _crudManager.RetrieveUserTeams();
+                var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();
                 Assert.AreEqual(numberOfPlayersBefore, numberOfPlayersAfter);
             }
@@ -134,11 +156,12 @@ namespace BasketballTests
         {
             using (var db = new BasketballProjectContext())
             {
-                var getPlayers = _crudManager.RetrieveUserTeams();
+                object selectedUserTeam = new UserTeams { UserId = 1, UserTeamId = 1 };
+                var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
                 object selectedPlayer = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George" };
                 _crudManager.RemovePlayerFromTeam(selectedPlayer);
-                var getPlayers2 = _crudManager.RetrieveUserTeams();
+                var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();
                 Assert.AreEqual(numberOfPlayersBefore - 1, numberOfPlayersAfter);
             }
@@ -149,11 +172,12 @@ namespace BasketballTests
         {
             using (var db = new BasketballProjectContext())
             {
-                var getPlayers = _crudManager.RetrieveUserTeams();
+                object selectedUserTeam = new UserTeams { UserId = 1, UserTeamId = 1 };
+                var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
                 object selectedPlayer = new Players { PlayerId = 92, FirstName = "Cory", LastName = "Joseph" };
                 _crudManager.RemovePlayerFromTeam(selectedPlayer);
-                var getPlayers2 = _crudManager.RetrieveUserTeams();
+                var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();
                 Assert.AreEqual(numberOfPlayersBefore, numberOfPlayersAfter);
             }

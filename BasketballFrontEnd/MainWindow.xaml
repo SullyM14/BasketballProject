@@ -9,7 +9,7 @@
     <Grid>
         <ListBox x:Name="ListBoxNbaTeams" Grid.Column="0" SelectionChanged="ListBoxNbaTeams_SelectionChanged" Margin="0,0,508,0"/>
         <ListBox x:Name="ListBoxNbaPlayers" Grid.Column="0" SelectionChanged="ListBoxNbaPlayers_SelectionChanged" Margin="298,0,0,290"/>
-        <ListBox x:Name="ListBoxUserTeams" Grid.Column="0" SelectionChanged="ListBoxUserTeams_SelectionChanged"  Margin="297,191,0,0"/>
+        <ListBox x:Name="ListBoxUserTeams" Grid.Column="0" Margin="297,191,0,0"/>
         <Label Name="TitleMyTeam"  Content="My Team" FontSize="24" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="353,144,0,0" VerticalAlignment="Top" Width="342"/>
         <TextBox x:Name="TextPlayerName" FontSize="24" HorizontalAlignment="Left" Margin="460,170,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Collapsed" IsEnabled="False"/>
         <TextBox x:Name="TextPPG" FontSize="24" HorizontalAlignment="Left" Margin="577,247,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Collapsed" IsEnabled="False"/>
@@ -21,5 +21,6 @@
         <Button x:Name="AddPlayerButton" Content="Add Player" HorizontalAlignment="Left" Margin="695,155,0,0" VerticalAlignment="Top" Click="AddPlayerButton_Click" Height="31" Width="74" Visibility="Collapsed"/>
         <Button x:Name="MyTeamButton" Content="My Team" FontSize ="18" HorizontalAlignment="Left" Margin="298,153,0,0" VerticalAlignment="Top" Click="MyTeamButton_Click" Visibility="Collapsed"/>
         <Button x:Name="RemoveButton" Content="Remove From Team" HorizontalAlignment="Left" Margin="649,155,0,0" VerticalAlignment="Top" Height="31" Width="122" Click="RemoveButton_Click" Visibility="Collapsed"/>
+        <ListBox x:Name="ListBoxSelectTeams" Grid.Column="0" SelectionChanged="ListBoxSelectTeams_SelectionChanged"  Margin="297,191,0,0"/>
     </Grid>
 </Window>

@@ -35,6 +35,14 @@ namespace BasketballBusinessLayer
             SelectedUserTeam = (UserTeams)selectedItem;
         }
 
+        public List<UserTeams> AllUserTeams()
+        {
+            using (var db = new BasketballProjectContext())
+            {
+                return db.UserTeams.ToList();
+            }
+        }
+
         public List<Players> RetrieveTeamPlayers(object selectedItem)
         {
             using (var db = new BasketballProjectContext())
@@ -49,7 +57,7 @@ namespace BasketballBusinessLayer
             }
         }
 
-        public List<Players> RetrieveUserTeams()
+        public List<Players> RetrieveUserTeamsPlayers(object selectedItem)
         {
             using(var db = new BasketballProjectContext())
             {
@@ -60,17 +68,18 @@ namespace BasketballBusinessLayer
 
                 SelectedUser = users.FirstOrDefault();
 
-                var userTeam =
-                    from uTeam in db.UserTeams
-                    where uTeam.UserId == SelectedUser.UserId
-                    select uTeam;
+                setSelectedUserTeam(selectedItem);
+                //var userTeam =
+                //    from uTeam in db.UserTeams
+                //    where (uTeam.UserId == SelectedUser.UserId) 
+                //    select uTeam;
 
-                SelectedUserTeam = userTeam.FirstOrDefault();
+                //SelectedUserTeam = userTeam.FirstOrDefault();
 
 
                 var fantasyPlayers =
                      from uTeamPlayers in db.UserTeamPlayers.Include(ut => ut.UserTeam).Include(p => p.Player)
-                     where (uTeamPlayers.UserTeam.UserId == SelectedUser.UserId) && (uTeamPlayers.UserTeamId == uTeamPlayers.UserTeam.UserTeamId)
+                     where (uTeamPlayers.UserTeam.UserId == SelectedUser.UserId) && (uTeamPlayers.UserTeamId == SelectedUserTeam.UserTeamId)
                      select uTeamPlayers.Player;
 
 
@@ -142,6 +151,15 @@ namespace BasketballBusinessLayer
                     db.UserTeamPlayers.RemoveRange(selectedPlayer);
                     db.SaveChanges();
                 }
+            }
+        }
+
+        public void MakeNewUserTeam()
+        {
+            using(var db = new BasketballProjectContext())
+            {
+                db.UserTeams.Add(new UserTeams { UserId = SelectedUser.UserId });
+                db.SaveChanges();
             }
         }
     }

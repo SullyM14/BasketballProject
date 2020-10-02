@@ -26,13 +26,17 @@ namespace BasketballFrontEnd
         public MainWindow()
         {
             InitializeComponent();
-            PopulateListNbaTeams();
-            PopulateUserTeam();
+            PopulateUserTeamChoices();
+        }
+
+        private void PopulateUserTeamChoices()
+        {
+            ListBoxSelectTeams.ItemsSource = _crud.AllUserTeams();
         }
 
         private void PopulateUserTeam()
         {
-            ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeams();
+            ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeamsPlayers(ListBoxSelectTeams.SelectedItem);
 
         }
 
@@ -95,10 +99,10 @@ namespace BasketballFrontEnd
             PointsLabel.Visibility = Visibility.Visible;
         }
 
-        private void ListBoxUserTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeams();
-        }
+        //private void ListBoxUserTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeamsPlayers();
+        //}
 
         private void AddPlayerButton_Click(object sender, RoutedEventArgs e)
         {
@@ -145,5 +149,24 @@ namespace BasketballFrontEnd
 
             }
         }
+
+        private void ListBoxSelectTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ListBoxSelectTeams.SelectedItem != null)
+            {
+                PopulateListNbaTeams();
+                PopulateUserTeam();
+                ListBoxSelectTeams.Visibility = Visibility.Collapsed;
+                MakeMyTeamFieldsVisible();
+            }
+        }
+
+        //private void NewTeamButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    _crud.MakeNewUserTeam();
+        //    PopulateUserTeam();
+        //    MakeMyTeamFieldsVisible();
+
+        //}
     }
 }
