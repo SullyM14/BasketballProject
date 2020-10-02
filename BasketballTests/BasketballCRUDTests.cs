@@ -21,6 +21,10 @@ namespace BasketballTests
                 _crudManager.setSelectedUserTeam(selectedTeam);
                 object selectedItem = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James" };
                 _crudManager.AddPlayerToUserTeam(selectedItem);
+                object selectedItem2 = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George" };
+                _crudManager.AddPlayerToUserTeam(selectedItem2);
+                object selectedItem3 = new Players { PlayerId = 3, FirstName = "Anthony", LastName = "Davis" };
+                _crudManager.RemovePlayerFromTeam(selectedItem3);
                 //Need to Remove Anthony Davis if he exists using remove method in CRUDManager, 
             }
         }
@@ -119,6 +123,36 @@ namespace BasketballTests
                 var numberOfPlayersBefore = getPlayers.Count();
                 object selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James" };
                 _crudManager.AddPlayerToUserTeam(selectedPlayer);
+                var getPlayers2 = _crudManager.RetrieveUserTeams();
+                var numberOfPlayersAfter = getPlayers2.Count();
+                Assert.AreEqual(numberOfPlayersBefore, numberOfPlayersAfter);
+            }
+        }
+
+        [Test]
+        public void WhenRemovingPlayerFromTeam_NumberOfPlayersInTeamDecreasesBy1()
+        {
+            using (var db = new BasketballProjectContext())
+            {
+                var getPlayers = _crudManager.RetrieveUserTeams();
+                var numberOfPlayersBefore = getPlayers.Count();
+                object selectedPlayer = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George" };
+                _crudManager.RemovePlayerFromTeam(selectedPlayer);
+                var getPlayers2 = _crudManager.RetrieveUserTeams();
+                var numberOfPlayersAfter = getPlayers2.Count();
+                Assert.AreEqual(numberOfPlayersBefore - 1, numberOfPlayersAfter);
+            }
+        }
+
+        [Test]
+        public void WhenRemovingPlayerFromTeamWhenThePlayerIsntInTheTeam_NumberOfPlayersInTeamStaysTheSame()
+        {
+            using (var db = new BasketballProjectContext())
+            {
+                var getPlayers = _crudManager.RetrieveUserTeams();
+                var numberOfPlayersBefore = getPlayers.Count();
+                object selectedPlayer = new Players { PlayerId = 92, FirstName = "Cory", LastName = "Joseph" };
+                _crudManager.RemovePlayerFromTeam(selectedPlayer);
                 var getPlayers2 = _crudManager.RetrieveUserTeams();
                 var numberOfPlayersAfter = getPlayers2.Count();
                 Assert.AreEqual(numberOfPlayersBefore, numberOfPlayersAfter);

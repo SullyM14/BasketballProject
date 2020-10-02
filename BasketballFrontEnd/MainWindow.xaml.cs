@@ -75,6 +75,16 @@ namespace BasketballFrontEnd
             ListBoxUserTeams.Visibility = Visibility.Collapsed;
             TitleMyTeam.Visibility = Visibility.Collapsed;
             //Make player details fields visible
+            //Check if player is already in team
+            if (_crud.IsPlayerInTeam(ListBoxNbaPlayers.SelectedItem)){
+                RemoveButton.Visibility = Visibility.Visible;
+                AddPlayerButton.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                AddPlayerButton.Visibility = Visibility.Visible;
+                RemoveButton.Visibility = Visibility.Collapsed;
+            }
             MyTeamButton.Visibility = Visibility.Visible;
             TextPlayerName.Visibility = Visibility.Visible;
             TextPPG.Visibility = Visibility.Visible;
@@ -83,7 +93,6 @@ namespace BasketballFrontEnd
             ReboundsLabel.Visibility = Visibility.Visible;
             AssistsLabel.Visibility = Visibility.Visible;
             PointsLabel.Visibility = Visibility.Visible;
-            AddPlayerButton.Visibility = Visibility.Visible;
         }
 
         private void ListBoxUserTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -96,6 +105,8 @@ namespace BasketballFrontEnd
             if (ListBoxNbaPlayers.SelectedItem != null)
             {
                 _crud.AddPlayerToUserTeam(ListBoxNbaPlayers.SelectedItem);
+                MakePlayerFieldsVisible();
+                PopulatePlayerFields();
             }
         }
 
@@ -109,6 +120,7 @@ namespace BasketballFrontEnd
         private void MakeMyTeamFieldsVisible()
         {
             //Collapse player details fields
+            RemoveButton.Visibility = Visibility.Collapsed;
             MyTeamButton.Visibility = Visibility.Collapsed;
             TextPlayerName.Visibility = Visibility.Collapsed;
             TextPPG.Visibility = Visibility.Collapsed;
@@ -121,6 +133,17 @@ namespace BasketballFrontEnd
             //Make the user team fields visible
             ListBoxUserTeams.Visibility = Visibility.Visible;
             TitleMyTeam.Visibility = Visibility.Visible;
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListBoxNbaPlayers.SelectedItem != null)
+            {
+                _crud.RemovePlayerFromTeam(ListBoxNbaPlayers.SelectedItem);
+                MakePlayerFieldsVisible();
+                PopulatePlayerFields();
+
+            }
         }
     }
 }
