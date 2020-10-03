@@ -69,13 +69,6 @@ namespace BasketballBusinessLayer
                 SelectedUser = users.FirstOrDefault();
 
                 setSelectedUserTeam(selectedItem);
-                //var userTeam =
-                //    from uTeam in db.UserTeams
-                //    where (uTeam.UserId == SelectedUser.UserId) 
-                //    select uTeam;
-
-                //SelectedUserTeam = userTeam.FirstOrDefault();
-
 
                 var fantasyPlayers =
                      from uTeamPlayers in db.UserTeamPlayers.Include(ut => ut.UserTeam).Include(p => p.Player)
@@ -171,12 +164,6 @@ namespace BasketballBusinessLayer
                 object newTeam = db.Entry(userTeam).Entity;
                 setSelectedUserTeam(newTeam);
                 return newTeam;
-                
-
-                //int id = userTeam.UserTeamId;
-                
-               // var NewTeamToSet =
-
             }
         }
     }

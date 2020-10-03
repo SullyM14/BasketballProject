@@ -27,13 +27,11 @@ namespace BasketballFrontEnd
         {
             InitializeComponent();
             PopulateUserTeamChoices();
-            //PopulateUserTeamComboBox();
         }
 
         private void PopulateUserTeamComboBox()
         {
             cmbUserTeams.ItemsSource = _crud.AllUserTeams();
-    //        throw new NotImplementedException();
         }
 
         private void PopulateUserTeamChoices()
