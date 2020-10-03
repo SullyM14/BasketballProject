@@ -97,7 +97,7 @@ namespace BasketballBusinessLayer
             using(var db = new BasketballProjectContext())
             {
                 SetSelectedPlayer(selectedItem);
-
+        
                 var searchForPlayers=
                     from UserTeamPlayers in db.UserTeamPlayers
                     where (UserTeamPlayers.UserTeamId == SelectedUserTeam.UserTeamId) && (UserTeamPlayers.PlayerId == SelectedPlayers.PlayerId)
@@ -154,12 +154,29 @@ namespace BasketballBusinessLayer
             }
         }
 
-        public void MakeNewUserTeam()
+        public object MakeNewUserTeam()
         {
             using(var db = new BasketballProjectContext())
             {
-                db.UserTeams.Add(new UserTeams { UserId = SelectedUser.UserId });
+                var users =
+                    from u in db.Users
+                    where u.UserId == 1
+                    select u;
+
+                SelectedUser = users.FirstOrDefault();
+                var userTeam = new UserTeams { UserId = SelectedUser.UserId };
+                db.UserTeams.Add(userTeam);
                 db.SaveChanges();
+                db.Entry(userTeam).GetDatabaseValues();
+                object newTeam = db.Entry(userTeam).Entity;
+                setSelectedUserTeam(newTeam);
+                return newTeam;
+                
+
+                //int id = userTeam.UserTeamId;
+                
+               // var NewTeamToSet =
+
             }
         }
     }

@@ -16,7 +16,7 @@ namespace BasketballTests
         {
             _crudManager = new CRUD();
             using (var db = new BasketballProjectContext())
-           {
+            {
                 object selectedTeam = new UserTeams { UserTeamId = 1, UserId = 1 };
                 _crudManager.setSelectedUserTeam(selectedTeam);
                 object selectedItem = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James" };
@@ -117,14 +117,14 @@ namespace BasketballTests
             }
 
         }
-   
+
         [Test]
         //[Ignore("Feature not completely Implmented yet")]
         public void WhenANewPlayerIsAddedToTheTeam_TheNumberOfPlayersInTheTeamIsIncreasedByOne()
         {
-            using(var db = new BasketballProjectContext())
+            using (var db = new BasketballProjectContext())
             {
-               object selectedUserTeam = new UserTeams { UserId = 1, UserTeamId = 1 };
+                object selectedUserTeam = new UserTeams { UserId = 1, UserTeamId = 1 };
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
                 object selectedItem = new Players { PlayerId = 3, FirstName = "Anthony", LastName = "Davis" };
@@ -182,5 +182,18 @@ namespace BasketballTests
                 Assert.AreEqual(numberOfPlayersBefore, numberOfPlayersAfter);
             }
         }
+
+        [Test]
+        public void WhenNewTeamAdded_NumberOfUserTeamsIncreasedByOne()
+        {
+            //_crudManager.MakeNewUserTeam();
+            var UserTeamsBefore = _crudManager.AllUserTeams().Count();
+            var newTeam = _crudManager.MakeNewUserTeam();
+            var UserTeamsAfter = _crudManager.AllUserTeams().Count();
+            Assert.AreEqual(UserTeamsBefore + 1, UserTeamsAfter);
+            //ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeamsPlayers(newTeam);
+
+        }
+
     }
 }

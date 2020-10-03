@@ -27,6 +27,13 @@ namespace BasketballFrontEnd
         {
             InitializeComponent();
             PopulateUserTeamChoices();
+            //PopulateUserTeamComboBox();
+        }
+
+        private void PopulateUserTeamComboBox()
+        {
+            cmbUserTeams.ItemsSource = _crud.AllUserTeams();
+    //        throw new NotImplementedException();
         }
 
         private void PopulateUserTeamChoices()
@@ -36,8 +43,10 @@ namespace BasketballFrontEnd
 
         private void PopulateUserTeam()
         {
-            ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeamsPlayers(ListBoxSelectTeams.SelectedItem);
-
+            object team = _crud.SelectedUserTeam;
+            cmbUserTeams.Visibility = Visibility.Visible;
+            PopulateUserTeamComboBox();
+            ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeamsPlayers(team);
         }
 
         private void PopulateListNbaTeams()
@@ -93,6 +102,8 @@ namespace BasketballFrontEnd
             //Collapse the user team fields
             ListBoxUserTeams.Visibility = Visibility.Collapsed;
             TitleMyTeam.Visibility = Visibility.Collapsed;
+            NewTeamButton.Visibility = Visibility.Collapsed;
+            cmbUserTeams.Visibility = Visibility.Collapsed;
             //Make player details fields visible
             MyTeamButton.Visibility = Visibility.Visible;
             TextPlayerName.Visibility = Visibility.Visible;
@@ -129,7 +140,6 @@ namespace BasketballFrontEnd
         {
             PopulateUserTeam();
             MakeMyTeamFieldsVisible();
-
         }
 
         private void MakeMyTeamFieldsVisible()
@@ -148,6 +158,8 @@ namespace BasketballFrontEnd
             //Make the user team fields visible
             ListBoxUserTeams.Visibility = Visibility.Visible;
             TitleMyTeam.Visibility = Visibility.Visible;
+            cmbUserTeams.Visibility = Visibility.Visible;
+            NewTeamButton.Visibility = Visibility.Visible;
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -166,19 +178,32 @@ namespace BasketballFrontEnd
             if(ListBoxSelectTeams.SelectedItem != null)
             {
                 PopulateListNbaTeams();
+                _crud.setSelectedUserTeam(ListBoxSelectTeams.SelectedItem);
                 PopulateUserTeam();
                 ListBoxSelectTeams.Visibility = Visibility.Collapsed;
                 MakeMyTeamFieldsVisible();
             }
-
         }
 
-        //private void NewTeamButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    _crud.MakeNewUserTeam();
-        //    PopulateUserTeam();
-        //    MakeMyTeamFieldsVisible();
+        private void NewTeamButton_Click(object sender, RoutedEventArgs e)
+        {
+            var newTeam = _crud.MakeNewUserTeam();
+            ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeamsPlayers(newTeam);
+            ListBoxSelectTeams.Visibility = Visibility.Collapsed;
+            PopulateListNbaTeams();
+            MakeMyTeamFieldsVisible();
+        }
 
-        //}
+        private void cmbUserTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbUserTeams.SelectedItem != null)
+            {
+                PopulateListNbaTeams();
+                _crud.setSelectedUserTeam(cmbUserTeams.SelectedItem);
+                PopulateUserTeam();
+                ListBoxSelectTeams.Visibility = Visibility.Collapsed;
+                MakeMyTeamFieldsVisible();
+            }
+        }
     }
 }
