@@ -45,6 +45,7 @@ namespace BasketballFrontEnd
             cmbUserTeams.Visibility = Visibility.Visible;
             PopulateUserTeamComboBox();
             ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeamsPlayers(team);
+            RemoveTeamButton.Visibility = Visibility.Visible;
         }
 
         private void PopulateListNbaTeams()
@@ -102,6 +103,7 @@ namespace BasketballFrontEnd
             TitleMyTeam.Visibility = Visibility.Collapsed;
             NewTeamButton.Visibility = Visibility.Collapsed;
             cmbUserTeams.Visibility = Visibility.Collapsed;
+            RemoveTeamButton.Visibility = Visibility.Collapsed;
             //Make player details fields visible
             MyTeamButton.Visibility = Visibility.Visible;
             TextPlayerName.Visibility = Visibility.Visible;
@@ -158,6 +160,7 @@ namespace BasketballFrontEnd
             TitleMyTeam.Visibility = Visibility.Visible;
             cmbUserTeams.Visibility = Visibility.Visible;
             NewTeamButton.Visibility = Visibility.Visible;
+            RemoveTeamButton.Visibility = Visibility.Visible;
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -202,6 +205,36 @@ namespace BasketballFrontEnd
                 ListBoxSelectTeams.Visibility = Visibility.Collapsed;
                 MakeMyTeamFieldsVisible();
             }
+        }
+
+        private void RemoveTeamButton_Click(object sender, RoutedEventArgs e)
+        {
+                _crud.RemoveUserTeam();
+                _crud.SelectedUserTeam = null;
+                MakeUserTeamsChoiceVisible();
+        }
+
+        private void MakeUserTeamsChoiceVisible()
+        {
+            PopulateUserTeamChoices();
+            ListBoxSelectTeams.Visibility = Visibility.Visible;
+            RemoveButton.Visibility = Visibility.Collapsed;
+            MyTeamButton.Visibility = Visibility.Collapsed;
+            TextPlayerName.Visibility = Visibility.Collapsed;
+            TextPPG.Visibility = Visibility.Collapsed;
+            TextAPG.Visibility = Visibility.Collapsed;
+            TextRPG.Visibility = Visibility.Collapsed;
+            ReboundsLabel.Visibility = Visibility.Collapsed;
+            AssistsLabel.Visibility = Visibility.Collapsed;
+            PointsLabel.Visibility = Visibility.Collapsed;
+            AddPlayerButton.Visibility = Visibility.Collapsed;
+            //Make the user team fields visible
+            ListBoxUserTeams.Visibility = Visibility.Collapsed;
+            TitleMyTeam.Visibility = Visibility.Collapsed;
+            cmbUserTeams.Visibility = Visibility.Collapsed;
+            NewTeamButton.Visibility = Visibility.Visible;
+            RemoveTeamButton.Visibility = Visibility.Collapsed;
+
         }
     }
 }

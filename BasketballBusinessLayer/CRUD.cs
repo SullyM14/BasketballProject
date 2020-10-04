@@ -166,5 +166,34 @@ namespace BasketballBusinessLayer
                 return newTeam;
             }
         }
+
+        public void RemoveUserTeam()
+        {
+            using (var db = new BasketballProjectContext())
+            {
+                var searchForPlayers =
+                    from UserTeamPlayers in db.UserTeamPlayers
+                    where (UserTeamPlayers.UserTeamId == SelectedUserTeam.UserTeamId)
+                    select UserTeamPlayers;
+
+                var isPlayersInUserTeam = searchForPlayers.Count();
+
+                if(isPlayersInUserTeam > 0)
+                {
+                    db.UserTeamPlayers.RemoveRange(searchForPlayers);
+                    db.SaveChanges();
+                }
+
+                var userTeam =
+                    from ut in db.UserTeams
+                    where ut.UserTeamId == SelectedUserTeam.UserTeamId
+                    select ut;
+
+                db.UserTeams.RemoveRange(userTeam);
+                db.SaveChanges();
+
+               // throw new NotImplementedException();
+            }
+            }
     }
 }

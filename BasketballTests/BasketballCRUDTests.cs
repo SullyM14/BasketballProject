@@ -191,8 +191,30 @@ namespace BasketballTests
             var newTeam = _crudManager.MakeNewUserTeam();
             var UserTeamsAfter = _crudManager.AllUserTeams().Count();
             Assert.AreEqual(UserTeamsBefore + 1, UserTeamsAfter);
-            //ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeamsPlayers(newTeam);
+        }
 
+        [Test]
+        public void WhenATeamIsRemoved_NumberOfTeamsDecreasesByOne()
+        {
+            var newTeam1 = _crudManager.MakeNewUserTeam();
+            _crudManager.setSelectedUserTeam(newTeam1);
+            var userTeamsBefore = _crudManager.AllUserTeams().Count();
+            _crudManager.RemoveUserTeam();
+            var userTeamsAfter = _crudManager.AllUserTeams().Count();
+
+            Assert.AreEqual(userTeamsBefore - 1, userTeamsAfter);
+        }
+
+        [Test]
+        public void WhenATeamIsRemovedThatDoesntExist_NumberOfTeamsStaysTheSame()
+        {
+            var newTeam = new UserTeams { UserId = 1, UserTeamId = 10 };
+            _crudManager.setSelectedUserTeam(newTeam);
+            var userTeamsBefore = _crudManager.AllUserTeams().Count();
+            _crudManager.RemoveUserTeam();
+            var userTeamsAfter = _crudManager.AllUserTeams().Count();
+
+            Assert.AreEqual(userTeamsBefore, userTeamsAfter);
         }
 
     }
