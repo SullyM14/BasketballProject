@@ -63,7 +63,7 @@ namespace BasketballBusinessLayer
             {
                 var users =
                     from u in db.Users
-                    where u.UserId == 1
+                    where u.UserId == SelectedUser.UserId
                     select u;
 
                 SelectedUser = users.FirstOrDefault();
@@ -153,7 +153,7 @@ namespace BasketballBusinessLayer
             {
                 var users =
                     from u in db.Users
-                    where u.UserId == 1
+                    where u.UserId == SelectedUser.UserId
                     select u;
 
                 SelectedUser = users.FirstOrDefault();

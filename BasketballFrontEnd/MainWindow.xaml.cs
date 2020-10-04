@@ -1,4 +1,5 @@
 ﻿using BasketballBusinessLayer;
+using BasketballProject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace BasketballFrontEnd
         public MainWindow()
         {
             InitializeComponent();
+            _crud.SelectedUser = new Users { UserId = 1 };
             PopulateUserTeamChoices();
         }
 
