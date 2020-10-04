@@ -172,7 +172,6 @@ namespace BasketballFrontEnd
                 _crud.RemovePlayerFromTeam(ListBoxNbaPlayers.SelectedItem);
                 MakePlayerFieldsVisible();
                 PopulatePlayerFields();
-
             }
         }
 
@@ -236,7 +235,6 @@ namespace BasketballFrontEnd
             cmbUserTeams.Visibility = Visibility.Collapsed;
             NewTeamButton.Visibility = Visibility.Visible;
             RemoveTeamButton.Visibility = Visibility.Collapsed;
-
         }
     }
 }

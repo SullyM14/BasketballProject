@@ -12,11 +12,8 @@ namespace BasketballBusinessLayer
     {
         public UserTeams SelectedUserTeam { get; set; }
         public Nbateams SelectedNbaTeam { get; set; }
-
         public Players SelectedPlayers { get; set; }
-
         public Users SelectedUser { get; set; }
-
         public List<Nbateams> RetrieveNbaTeams()
         {
             using (var db = new BasketballProjectContext())
@@ -65,16 +62,13 @@ namespace BasketballBusinessLayer
                     from u in db.Users
                     where u.UserId == SelectedUser.UserId
                     select u;
-
                 SelectedUser = users.FirstOrDefault();
-
                 setSelectedUserTeam(selectedItem);
 
                 var fantasyPlayers =
                      from uTeamPlayers in db.UserTeamPlayers.Include(ut => ut.UserTeam).Include(p => p.Player)
                      where (uTeamPlayers.UserTeam.UserId == SelectedUser.UserId) && (uTeamPlayers.UserTeamId == SelectedUserTeam.UserTeamId)
                      select uTeamPlayers.Player;
-
 
                 return fantasyPlayers.ToList();
             }
@@ -191,8 +185,6 @@ namespace BasketballBusinessLayer
 
                 db.UserTeams.RemoveRange(userTeam);
                 db.SaveChanges();
-
-               // throw new NotImplementedException();
             }
             }
     }

@@ -26,7 +26,6 @@ namespace BasketballTests
                 _crudManager.AddPlayerToUserTeam(selectedItem2);
                 object selectedItem3 = new Players { PlayerId = 3, FirstName = "Anthony", LastName = "Davis" };
                 _crudManager.RemovePlayerFromTeam(selectedItem3);
-                //Need to Remove Anthony Davis if he exists using remove method in CRUDManager, 
             }
         }
 
@@ -120,7 +119,6 @@ namespace BasketballTests
         }
 
         [Test]
-        //[Ignore("Feature not completely Implmented yet")]
         public void WhenANewPlayerIsAddedToTheTeam_TheNumberOfPlayersInTheTeamIsIncreasedByOne()
         {
             using (var db = new BasketballProjectContext())
@@ -217,6 +215,5 @@ namespace BasketballTests
 
             Assert.AreEqual(userTeamsBefore, userTeamsAfter);
         }
-
     }
 }
