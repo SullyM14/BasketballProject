@@ -17,6 +17,7 @@ namespace BasketballTests
             _crudManager = new CRUD();
             using (var db = new BasketballProjectContext())
             {
+                _crudManager.SelectedUser = new Users { UserId = 1 };
                 object selectedTeam = new UserTeams { UserTeamId = 1, UserId = 1 };
                 _crudManager.setSelectedUserTeam(selectedTeam);
                 object selectedItem = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James" };
