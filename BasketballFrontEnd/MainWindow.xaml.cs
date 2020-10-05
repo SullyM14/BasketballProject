@@ -101,20 +101,10 @@ namespace BasketballFrontEnd
         private void MakePlayerFieldsVisible()
         {
             //Collapse the user team fields
-            ListBoxUserTeams.Visibility = Visibility.Collapsed;
-            TitleMyTeam.Visibility = Visibility.Collapsed;
-            NewTeamButton.Visibility = Visibility.Collapsed;
-            cmbUserTeams.Visibility = Visibility.Collapsed;
-            RemoveTeamButton.Visibility = Visibility.Collapsed;
+            UserTeamDetails.Visibility = Visibility.Collapsed;
+            UserSelectTeams.Visibility = Visibility.Collapsed;
             //Make player details fields visible
-            MyTeamButton.Visibility = Visibility.Visible;
-            TextPlayerName.Visibility = Visibility.Visible;
-            TextPPG.Visibility = Visibility.Visible;
-            TextAPG.Visibility = Visibility.Visible;
-            TextRPG.Visibility = Visibility.Visible;
-            ReboundsLabel.Visibility = Visibility.Visible;
-            AssistsLabel.Visibility = Visibility.Visible;
-            PointsLabel.Visibility = Visibility.Visible;
+            PlayerDetails.Visibility = Visibility.Visible;
         }
 
         private void ListBoxUserTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -148,22 +138,10 @@ namespace BasketballFrontEnd
         private void MakeMyTeamFieldsVisible()
         {
             //Collapse player details fields
-            RemoveButton.Visibility = Visibility.Collapsed;
-            MyTeamButton.Visibility = Visibility.Collapsed;
-            TextPlayerName.Visibility = Visibility.Collapsed;
-            TextPPG.Visibility = Visibility.Collapsed;
-            TextAPG.Visibility = Visibility.Collapsed;
-            TextRPG.Visibility = Visibility.Collapsed;
-            ReboundsLabel.Visibility = Visibility.Collapsed;
-            AssistsLabel.Visibility = Visibility.Collapsed;
-            PointsLabel.Visibility = Visibility.Collapsed;
-            AddPlayerButton.Visibility = Visibility.Collapsed;
-            //Make the user team fields visible
-            ListBoxUserTeams.Visibility = Visibility.Visible;
-            //TitleMyTeam.Visibility = Visibility.Visible;
-            cmbUserTeams.Visibility = Visibility.Visible;
-            NewTeamButton.Visibility = Visibility.Visible;
-            RemoveTeamButton.Visibility = Visibility.Visible;
+            PlayerDetails.Visibility = Visibility.Collapsed;
+            //Make the user team details fields visible
+            UserTeamDetails.Visibility = Visibility.Visible;
+
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -218,24 +196,13 @@ namespace BasketballFrontEnd
 
         private void MakeUserTeamsChoiceVisible()
         {
+            //Populate and make visible Select teams
             PopulateUserTeamChoices();
+            UserSelectTeams.Visibility = Visibility.Visible;
             ListBoxSelectTeams.Visibility = Visibility.Visible;
-            RemoveButton.Visibility = Visibility.Collapsed;
-            MyTeamButton.Visibility = Visibility.Collapsed;
-            TextPlayerName.Visibility = Visibility.Collapsed;
-            TextPPG.Visibility = Visibility.Collapsed;
-            TextAPG.Visibility = Visibility.Collapsed;
-            TextRPG.Visibility = Visibility.Collapsed;
-            ReboundsLabel.Visibility = Visibility.Collapsed;
-            AssistsLabel.Visibility = Visibility.Collapsed;
-            PointsLabel.Visibility = Visibility.Collapsed;
-            AddPlayerButton.Visibility = Visibility.Collapsed;
-            //Make the user team fields visible
-            ListBoxUserTeams.Visibility = Visibility.Collapsed;
-            TitleMyTeam.Visibility = Visibility.Collapsed;
-            cmbUserTeams.Visibility = Visibility.Collapsed;
-            NewTeamButton.Visibility = Visibility.Visible;
-            RemoveTeamButton.Visibility = Visibility.Collapsed;
+            //Collapse the rest
+            PlayerDetails.Visibility = Visibility.Collapsed;
+            UserTeamDetails.Visibility = Visibility.Collapsed;
         }
     }
 }
