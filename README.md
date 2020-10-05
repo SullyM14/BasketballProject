@@ -62,3 +62,31 @@ The aim for this project is to create a 3 tier application that allows different
 
     
 
+# Sprint 2
+
+### Sprint Goal
+
+### Output of Sprint Review
+
+#### Beginning of Sprint 2
+
+![image-20201005150915889](C:\Users\miahs\AppData\Roaming\Typora\typora-user-images\image-20201005150915889.png)
+
+#### End of Sprint 2
+
+![image-20201005151057138](C:\Users\miahs\AppData\Roaming\Typora\typora-user-images\image-20201005151057138.png)
+
+### Sprint Retrospective
+
+- **Positives**
+
+  - Completed the Sprint and met all user stories within the sprints "Definition of done"
+  - Built a lot of confidence with testing databases and also using Entity Framework 
+
+- **Things I Learnt**
+
+  - SCRUM was really effective especially in this as I could simply look at the next task for the story and start working on it without wasting time thinking about what to do next
+
+- **Action Plan**
+  - Continue with Sprint 3
+  - Nothing unfinished in Sprint 2

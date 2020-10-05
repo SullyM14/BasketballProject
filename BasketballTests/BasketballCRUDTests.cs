@@ -18,14 +18,26 @@ namespace BasketballTests
             using (var db = new BasketballProjectContext())
             {
                 _crudManager.SelectedUser = new Users { UserId = 1 };
-                object selectedTeam = new UserTeams { UserTeamId = 1, UserId = 1 };
+                object selectedTeam = new UserTeams { UserTeamId = 9004, UserId = 1, Budget = 100 };
                 _crudManager.setSelectedUserTeam(selectedTeam);
-                object selectedItem = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James" };
+                _crudManager.ResetBudget();
+                object selectedItem = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James", Price = 40 };
                 _crudManager.AddPlayerToUserTeam(selectedItem);
-                object selectedItem2 = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George" };
+                object selectedItem2 = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George", Price = 35};
                 _crudManager.AddPlayerToUserTeam(selectedItem2);
-                object selectedItem3 = new Players { PlayerId = 3, FirstName = "Anthony", LastName = "Davis" };
+                object selectedItem3 = new Players { PlayerId = 11, FirstName = "Patrick", LastName = "Beverley", Price = 1};
                 _crudManager.RemovePlayerFromTeam(selectedItem3);
+
+                object selectedUserTeam = new UserTeams { UserTeamId = 9006, UserId = 1, Budget = 100 };
+                _crudManager.setSelectedUserTeam(selectedUserTeam);
+                _crudManager.ResetBudget();
+                var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
+                object selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James", Price = 40 };
+                _crudManager.RemovePlayerFromTeam(selectedPlayer);
+                object selectedPlayer1 = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George", Price = 35 };
+                _crudManager.RemovePlayerFromTeam(selectedPlayer1);
+                object selectedPlayer2 = new Players { PlayerId = 17, FirstName = "Nikola", LastName = "Jokic", Price = 40 };
+                _crudManager.RemovePlayerFromTeam(selectedPlayer2);
             }
         }
 
@@ -123,10 +135,10 @@ namespace BasketballTests
         {
             using (var db = new BasketballProjectContext())
             {
-                object selectedUserTeam = new UserTeams { UserId = 1, UserTeamId = 1 };
+                object selectedUserTeam = new UserTeams {UserTeamId = 9004, UserId = 1, Budget = 100 };
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
-                object selectedItem = new Players { PlayerId = 3, FirstName = "Anthony", LastName = "Davis" };
+                object selectedItem = new Players { PlayerId = 11, FirstName = "Patrick", LastName = "Beverley", Price = 1};
                 _crudManager.AddPlayerToUserTeam(selectedItem);
                 var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();
@@ -139,10 +151,10 @@ namespace BasketballTests
         {
             using (var db = new BasketballProjectContext())
             {
-                object selectedUserTeam = new UserTeams { UserId = 1, UserTeamId = 1 };
+                object selectedUserTeam = new UserTeams { UserTeamId = 9004, UserId = 1, Budget = 100 };
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
-                object selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James" };
+                object selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James", Price = 40};
                 _crudManager.AddPlayerToUserTeam(selectedPlayer);
                 var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();
@@ -151,14 +163,42 @@ namespace BasketballTests
         }
 
         [Test]
+        public void WhenTryingThirdPLayerAddedIsOverBudget_ThirdPlayerIsNotAddedAndNumberOfPlayersIsOnlyPlus2()
+        {
+            using (var db = new BasketballProjectContext())
+            {
+                object selectedUserTeam = new UserTeams { UserTeamId = 9006, UserId = 1, Budget = 100 };
+                //_crudManager.setSelectedUserTeam(selectedUserTeam);
+                //_crudManager.ResetBudget();
+                var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
+                var numberOfPlayersBefore = getPlayers.Count();
+                object selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James", Price = 40 };
+                _crudManager.AddPlayerToUserTeam(selectedPlayer);
+                object selectedPlayer1 = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George", Price = 35 };
+                _crudManager.AddPlayerToUserTeam(selectedPlayer1);
+                object selectedPlayer2 = new Players { PlayerId = 17, FirstName = "Nikola", LastName = "Jokic", Price = 40 };
+                _crudManager.AddPlayerToUserTeam(selectedPlayer2);
+                var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
+                var numberOfPlayersAfter = getPlayers2.Count();
+                Assert.AreEqual(numberOfPlayersBefore + 2, numberOfPlayersAfter);
+            }
+        }
+
+        [Test]
+        public void WhenTryingToAddMoreThan6Players_TheNumberOfPlayersIsSix()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
         public void WhenRemovingPlayerFromTeam_NumberOfPlayersInTeamDecreasesBy1()
         {
             using (var db = new BasketballProjectContext())
             {
-                object selectedUserTeam = new UserTeams { UserId = 1, UserTeamId = 1 };
+                object selectedUserTeam = new UserTeams { UserTeamId = 9004, UserId = 1, Budget = 100 };
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
-                object selectedPlayer = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George" };
+                object selectedPlayer = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George", Price = 35 };
                 _crudManager.RemovePlayerFromTeam(selectedPlayer);
                 var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();

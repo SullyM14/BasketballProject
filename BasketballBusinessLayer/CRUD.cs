@@ -23,6 +23,16 @@ namespace BasketballBusinessLayer
             }
         }
 
+        public void ResetBudget()
+        {
+            using (var db = new BasketballProjectContext())
+            {
+                SelectedUserTeam.Budget = 100;
+                db.UserTeams.Update(SelectedUserTeam);
+                db.SaveChanges();
+            }
+        }
+
         public void setSelectedNbaTeam(object selectedItem)
         {
             SelectedNbaTeam = (Nbateams)selectedItem;
