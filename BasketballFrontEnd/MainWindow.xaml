@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="Fantasy Basketball" Height="1206" Width="1034">
     <Grid>
-        <ListBox x:Name="ListBoxNbaTeams" Grid.Column="0" SelectionChanged="ListBoxNbaTeams_SelectionChanged" Margin="0,0,508,0"/>
-        <ListBox x:Name="ListBoxNbaPlayers" Grid.Column="0" SelectionChanged="ListBoxNbaPlayers_SelectionChanged" Margin="298,0,0,314"/>
+        <ListBox x:Name="ListBoxNbaTeams" Grid.Column="0" SelectionChanged="ListBoxNbaTeams_SelectionChanged" Margin="0,0,741,0"/>
+        <ListBox x:Name="ListBoxNbaPlayers" Grid.Column="0" SelectionChanged="ListBoxNbaPlayers_SelectionChanged" Margin="298,0,0,595"/>
 
-        <GroupBox>
-            <ListBox x:Name="ListBoxSelectTeams" Grid.Column="0" SelectionChanged="ListBoxSelectTeams_SelectionChanged"  Margin="297,191,0,0"/>
+        <GroupBox Margin="317,370,0,0">
+            <ListBox x:Name="ListBoxSelectTeams" Grid.Column="0" SelectionChanged="ListBoxSelectTeams_SelectionChanged" Height="976"/>
         </GroupBox>
 
-        <GroupBox Margin="317,197,0,0">
+        <GroupBox Margin="317,370,0,0">
             <StackPanel Height="794">
                 <Label x:Name="TitleMyTeam"  Content="My Team" FontSize="18" HorizontalContentAlignment="Center" Visibility="Visible"/>
                 <Button x:Name="NewTeamButton" Content="New Team" HorizontalAlignment="Left" VerticalAlignment="Top" Click="NewTeamButton_Click" Width="83" />
