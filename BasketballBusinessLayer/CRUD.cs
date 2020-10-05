@@ -92,6 +92,7 @@ namespace BasketballBusinessLayer
 
                 var isPlayerAlreadyInTeam = searchForPlayers.Count();
 
+                //NEED TO ADD BUDGET CONSTRCITIONS AND PLAYER CONSTRICTIONS NO MORE THAN 6 PLAYERS IN ONE TEAM
                 if (isPlayerAlreadyInTeam != 1)
                 {
                     db.Add(new UserTeamPlayers {UserTeamId = SelectedUserTeam.UserTeamId, PlayerId = SelectedPlayers.PlayerId });
@@ -151,7 +152,7 @@ namespace BasketballBusinessLayer
                     select u;
 
                 SelectedUser = users.FirstOrDefault();
-                var userTeam = new UserTeams { UserId = SelectedUser.UserId };
+                var userTeam = new UserTeams { UserId = SelectedUser.UserId, Budget = 100};
                 db.UserTeams.Add(userTeam);
                 db.SaveChanges();
                 db.Entry(userTeam).GetDatabaseValues();

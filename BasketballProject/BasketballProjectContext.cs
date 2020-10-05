@@ -73,6 +73,8 @@ namespace BasketballProject
                     .HasColumnName("PPG")
                     .HasColumnType("decimal(18, 1)");
 
+                entity.Property(e => e.Price).HasColumnType("decimal(18, 1)");
+
                 entity.Property(e => e.Rpg)
                     .HasColumnName("RPG")
                     .HasColumnType("decimal(18, 1)");
@@ -105,6 +107,13 @@ namespace BasketballProject
             {
                 entity.HasKey(e => e.UserTeamId)
                     .HasName("PK__tmp_ms_x__9ADF80B25A75C563");
+
+                entity.Property(e => e.Budget).HasColumnType("decimal(18, 1)");
+
+                entity.Property(e => e.TeamName)
+                    .IsRequired()
+                    .HasColumnName("Team Name")
+                    .HasMaxLength(50);
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.UserTeams)

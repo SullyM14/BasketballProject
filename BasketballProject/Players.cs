@@ -23,6 +23,7 @@ namespace BasketballProject
         public int TeamId { get; set; }
         public int? GamesPlayed { get; set; }
         public string Position { get; set; }
+        public decimal Price { get; set; }
 
         public virtual Nbateams Team { get; set; }
         public virtual ICollection<UserTeamPlayers> UserTeamPlayers { get; set; }
