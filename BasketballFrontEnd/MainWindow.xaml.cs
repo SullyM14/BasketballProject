@@ -128,6 +128,7 @@ namespace BasketballFrontEnd
                 MakePlayerFieldsVisible();
                 RemoveOrAddPlayerVisibleCheck(ListBoxNbaPlayers.SelectedItem);
                 PopulatePlayerFields();
+                MessageBox.Show("Player Added Successfully", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -153,6 +154,8 @@ namespace BasketballFrontEnd
                 _crud.RemovePlayerFromTeam(ListBoxNbaPlayers.SelectedItem);
                 MakeMyTeamFieldsVisible();
                 PopulateUserTeam();
+                MessageBox.Show("Player Removed Successfully", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+
             }
             else {
                 if(ListBoxUserTeams.SelectedItem != null)
@@ -160,8 +163,10 @@ namespace BasketballFrontEnd
                     _crud.RemovePlayerFromTeam(ListBoxUserTeams.SelectedItem);
                     MakeMyTeamFieldsVisible();
                     PopulateUserTeam();
+                    MessageBox.Show("Player Removed Successfully", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 }
-             }
+            }
         }
 
         private void ListBoxSelectTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -204,6 +209,8 @@ namespace BasketballFrontEnd
                 _crud.RemoveUserTeam();
                 _crud.SelectedUserTeam = null;
                 MakeUserTeamsChoiceVisible();
+                MessageBox.Show("Team Removed Successfully", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+
         }
 
         private void MakeUserTeamsChoiceVisible()
