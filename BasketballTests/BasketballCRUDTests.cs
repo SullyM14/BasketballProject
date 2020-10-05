@@ -187,7 +187,35 @@ namespace BasketballTests
         [Test]
         public void WhenTryingToAddMoreThan6Players_TheNumberOfPlayersIsSix()
         {
-            throw new NotImplementedException();
+            using (var db = new BasketballProjectContext())
+            {
+                var team = _crudManager.MakeNewUserTeam();
+                var getPlayers = _crudManager.RetrieveUserTeamsPlayers(team);
+                var numberOfPlayersBefore = getPlayers.Count();
+                object selectedPlayer = new Players { PlayerId = 2, FirstName = "JaVale", LastName = "Mcgee", Price = 5};
+                _crudManager.AddPlayerToUserTeam(selectedPlayer);
+                object selectedPlayer1 = new Players { PlayerId = 14, FirstName = "Ivica", LastName = "Zubac", Price = 5 };
+                _crudManager.AddPlayerToUserTeam(selectedPlayer1);
+                object selectedPlayer2 = new Players { PlayerId = 22, FirstName = "Will", LastName = "Barton", Price = 5 };
+                _crudManager.AddPlayerToUserTeam(selectedPlayer2);
+
+                object selectedPlayer3 = new Players { PlayerId = 30, FirstName = "Ben", LastName = "McLemore", Price = 5 };
+                _crudManager.AddPlayerToUserTeam(selectedPlayer3);
+               
+                object selectedPlayer4 = new Players { PlayerId = 31, FirstName = "Danuel", LastName = "House", Price = 5 };
+                _crudManager.AddPlayerToUserTeam(selectedPlayer4);
+                
+                object selectedPlayer5 = new Players { PlayerId = 39, FirstName = "Darius", LastName = "Bazley", Price = 5 };
+                _crudManager.AddPlayerToUserTeam(selectedPlayer5);
+
+                object selectedPlayer6 = new Players { PlayerId = 46, FirstName = "Tony", LastName = "Bradley", Price = 5};
+                _crudManager.AddPlayerToUserTeam(selectedPlayer6);
+
+                var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(team);
+                var numberOfPlayersAfter = getPlayers2.Count();
+                Assert.AreEqual(numberOfPlayersBefore + 6, numberOfPlayersAfter);
+                _crudManager.RemoveUserTeam();
+            }
         }
 
         [Test]
