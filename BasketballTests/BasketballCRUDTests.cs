@@ -252,7 +252,6 @@ namespace BasketballTests
             var userTeamsBefore = _crudManager.AllUserTeams().Count();
             _crudManager.RemoveUserTeam();
             var userTeamsAfter = _crudManager.AllUserTeams().Count();
-
             Assert.AreEqual(userTeamsBefore, userTeamsAfter);
         }
     }

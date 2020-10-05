@@ -151,9 +151,17 @@ namespace BasketballFrontEnd
             if (ListBoxNbaPlayers.SelectedItem != null)
             {
                 _crud.RemovePlayerFromTeam(ListBoxNbaPlayers.SelectedItem);
-                MakePlayerFieldsVisible();
-                PopulatePlayerFields();
+                MakeMyTeamFieldsVisible();
+                PopulateUserTeam();
             }
+            else {
+                if(ListBoxUserTeams.SelectedItem != null)
+                {
+                    _crud.RemovePlayerFromTeam(ListBoxUserTeams.SelectedItem);
+                    MakeMyTeamFieldsVisible();
+                    PopulateUserTeam();
+                }
+             }
         }
 
         private void ListBoxSelectTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -176,6 +184,7 @@ namespace BasketballFrontEnd
             TextBudget.Text = _crud.SelectedUserTeam.Budget.ToString();
             PopulateListNbaTeams();
             MakeMyTeamFieldsVisible();
+            MessageBox.Show("New Team Added successfully", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void cmbUserTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)

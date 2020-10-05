@@ -161,6 +161,9 @@ namespace BasketballBusinessLayer
                          where (UserTeamPlayers.UserTeamId == SelectedUserTeam.UserTeamId) && (UserTeamPlayers.PlayerId == SelectedPlayers.PlayerId)
                          select UserTeamPlayers;
 
+                    SelectedUserTeam.Budget += SelectedPlayers.Price;
+                    db.UserTeams.Update(SelectedUserTeam);
+                    db.SaveChanges();
                     db.UserTeamPlayers.RemoveRange(selectedPlayer);
                     db.SaveChanges();
                 }
