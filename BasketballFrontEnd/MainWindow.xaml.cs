@@ -134,6 +134,7 @@ namespace BasketballFrontEnd
             {
                 _crud.AddPlayerToUserTeam(ListBoxNbaPlayers.SelectedItem);
                 MakePlayerFieldsVisible();
+                RemoveOrAddPlayerVisibleCheck(ListBoxNbaPlayers.SelectedItem);
                 PopulatePlayerFields();
             }
         }
@@ -159,7 +160,7 @@ namespace BasketballFrontEnd
             AddPlayerButton.Visibility = Visibility.Collapsed;
             //Make the user team fields visible
             ListBoxUserTeams.Visibility = Visibility.Visible;
-            TitleMyTeam.Visibility = Visibility.Visible;
+            //TitleMyTeam.Visibility = Visibility.Visible;
             cmbUserTeams.Visibility = Visibility.Visible;
             NewTeamButton.Visibility = Visibility.Visible;
             RemoveTeamButton.Visibility = Visibility.Visible;

@@ -5,30 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BasketballFrontEnd"
         mc:Ignorable="d"
-        Title="Fantasy Basketball" Height="450" Width="800">
+        Title="Fantasy Basketball" Height="1206" Width="1034">
     <Grid>
-        <ListBox x:Name="ListBoxSelectTeams" Grid.Column="0" SelectionChanged="ListBoxSelectTeams_SelectionChanged"  Margin="297,191,0,0"/>
         <ListBox x:Name="ListBoxNbaTeams" Grid.Column="0" SelectionChanged="ListBoxNbaTeams_SelectionChanged" Margin="0,0,508,0"/>
         <ListBox x:Name="ListBoxNbaPlayers" Grid.Column="0" SelectionChanged="ListBoxNbaPlayers_SelectionChanged" Margin="298,0,0,314"/>
 
+        <GroupBox>
+            <ListBox x:Name="ListBoxSelectTeams" Grid.Column="0" SelectionChanged="ListBoxSelectTeams_SelectionChanged"  Margin="297,191,0,0"/>
+        </GroupBox>
 
-        <Label x:Name="TitleMyTeam"  Content="My Team" FontSize="24" HorizontalContentAlignment="Center" Margin="443,127,115,260" Visibility="Collapsed"/>
-        <ListBox x:Name="ListBoxUserTeams" Grid.Column="0" Margin="297,191,0,0" SelectionChanged="ListBoxUserTeams_SelectionChanged" Visibility="Collapsed"/>
+        <GroupBox Margin="317,197,0,0">
+            <StackPanel Height="794">
+                <Label x:Name="TitleMyTeam"  Content="My Team" FontSize="18" HorizontalContentAlignment="Center" Visibility="Visible"/>
+                <Button x:Name="NewTeamButton" Content="New Team" HorizontalAlignment="Left" VerticalAlignment="Top" Click="NewTeamButton_Click" Width="83" />
+                <ComboBox x:Name="cmbUserTeams" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectionChanged="cmbUserTeams_SelectionChanged" Visibility="Visible"/>
+                <Button x:Name="RemoveTeamButton" Content="Remove Team" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Click="RemoveTeamButton_Click" Visibility="Visible"/>
+                <ListBox x:Name="ListBoxUserTeams" Grid.Column="0" SelectionChanged="ListBoxUserTeams_SelectionChanged" Visibility="Visible" Height="100"/>
+            </StackPanel>
+        </GroupBox>
 
-
-        <TextBox x:Name="TextPlayerName" FontSize="24" HorizontalAlignment="Left" Margin="460,170,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Collapsed" IsEnabled="False"/>
-        <TextBox x:Name="TextPPG" FontSize="24" HorizontalAlignment="Left" Margin="577,247,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Collapsed" IsEnabled="False"/>
-        <TextBox x:Name="TextAPG" FontSize="24" HorizontalAlignment="Left" Margin="577,308,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Collapsed" IsEnabled="False"/>
-        <TextBox x:Name="TextRPG"  FontSize="24" HorizontalAlignment="Left" Margin="577,368,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Collapsed" IsEnabled="False"/>
-        <Label x:Name="ReboundsLabel" Content="Rebounds Per Game" FontSize="24" HorizontalAlignment="Left" Margin="306,371,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
-        <Label x:Name="AssistsLabel" Content="Assists Per Game" FontSize="24" HorizontalAlignment="Left" Margin="309,308,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
-        <Label x:Name="PointsLabel" Content="Points Per Game" FontSize="24" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
-        <Button x:Name="AddPlayerButton" Content="Add Player" HorizontalAlignment="Left" Margin="695,155,0,0" VerticalAlignment="Top" Click="AddPlayerButton_Click" Height="31" Width="74" Visibility="Collapsed"/>
-        <Button x:Name="MyTeamButton" Content="My Team" FontSize ="18" HorizontalAlignment="Left" Margin="298,153,0,0" VerticalAlignment="Top" Click="MyTeamButton_Click" Visibility="Collapsed"/>
-        <Button x:Name="RemoveButton" Content="Remove From Team" HorizontalAlignment="Left" Margin="649,155,0,0" VerticalAlignment="Top" Height="31" Width="122" Click="RemoveButton_Click" Visibility="Collapsed"/>
-        <Button x:Name="NewTeamButton" Content="New Team" HorizontalAlignment="Left" Margin="325,158,0,0" VerticalAlignment="Top" Click="NewTeamButton_Click" Width="83" />
-
-        <ComboBox x:Name="cmbUserTeams" HorizontalAlignment="Left" Margin="298,131,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cmbUserTeams_SelectionChanged" Visibility="Collapsed"/>
-        <Button x:Name="RemoveTeamButton" Content="Remove Team" HorizontalAlignment="Left" Margin="431,158,0,0" VerticalAlignment="Top" Width="83" Click="RemoveTeamButton_Click" Visibility="Collapsed"/>
+        <GroupBox Visibility="Collapsed">
+            <StackPanel>
+                <TextBox x:Name="TextPlayerName" FontSize="24" HorizontalAlignment="Left" Margin="460,170,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Visible" IsEnabled="False"/>
+                <TextBox x:Name="TextPPG" FontSize="24" HorizontalAlignment="Left" Margin="577,247,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Visible" IsEnabled="False"/>
+                <TextBox x:Name="TextAPG" FontSize="24" HorizontalAlignment="Left" Margin="577,308,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Visible" IsEnabled="False"/>
+                <TextBox x:Name="TextRPG"  FontSize="24" HorizontalAlignment="Left" Margin="577,368,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Visible" IsEnabled="False"/>
+                <Label x:Name="ReboundsLabel" Content="Rebounds Per Game" FontSize="24" HorizontalAlignment="Left" Margin="306,371,0,0" VerticalAlignment="Top" Visibility="Visible"/>
+                <Label x:Name="AssistsLabel" Content="Assists Per Game" FontSize="24" HorizontalAlignment="Left" Margin="309,308,0,0" VerticalAlignment="Top" Visibility="Visible"/>
+                <Label x:Name="PointsLabel" Content="Points Per Game" FontSize="24" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" Visibility="Visible"/>
+                <Button x:Name="AddPlayerButton" Content="Add Player" HorizontalAlignment="Left" Margin="695,155,0,0" VerticalAlignment="Top" Click="AddPlayerButton_Click" Height="31" Width="74" Visibility="Visible"/>
+                <Button x:Name="MyTeamButton" Content="My Team" FontSize ="18" HorizontalAlignment="Left" Margin="298,153,0,0" VerticalAlignment="Top" Click="MyTeamButton_Click" Visibility="Visible"/>
+                <Button x:Name="RemoveButton" Content="Remove From Team" HorizontalAlignment="Left" Margin="649,155,0,0" VerticalAlignment="Top" Height="31" Width="122" Click="RemoveButton_Click" Visibility="Visible"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>
