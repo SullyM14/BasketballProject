@@ -47,6 +47,7 @@ namespace BasketballFrontEnd
             cmbUserTeams.Visibility = Visibility.Visible;
             PopulateUserTeamComboBox();
             ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeamsPlayers(team);
+            TextBudget.Text = _crud.SelectedUserTeam.Budget.ToString();
             RemoveTeamButton.Visibility = Visibility.Visible;
         }
 
@@ -81,6 +82,7 @@ namespace BasketballFrontEnd
                 TextPPG.Text = _crud.SelectedPlayers.Ppg.ToString();
                 TextAPG.Text = _crud.SelectedPlayers.Apg.ToString();
                 TextRPG.Text = _crud.SelectedPlayers.Rpg.ToString();
+                TextPrice.Text = _crud.SelectedPlayers.Price.ToString();
             }
         }
 
@@ -171,6 +173,7 @@ namespace BasketballFrontEnd
             var newTeam = _crud.MakeNewUserTeam();
             ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeamsPlayers(newTeam);
             ListBoxSelectTeams.Visibility = Visibility.Collapsed;
+            TextBudget.Text = _crud.SelectedUserTeam.Budget.ToString();
             PopulateListNbaTeams();
             MakeMyTeamFieldsVisible();
         }

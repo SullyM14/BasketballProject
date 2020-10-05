@@ -12,7 +12,6 @@ namespace BasketballProject
 
         public int UserTeamId { get; set; }
         public int UserId { get; set; }
-        public string TeamName { get; set; }
         public decimal Budget { get; set; }
 
         public virtual Users User { get; set; }

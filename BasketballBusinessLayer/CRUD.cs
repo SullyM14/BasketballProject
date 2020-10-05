@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using BasketballProject;
 using Microsoft.EntityFrameworkCore;
@@ -84,7 +85,15 @@ namespace BasketballBusinessLayer
             using(var db = new BasketballProjectContext())
             {
                 SetSelectedPlayer(selectedItem);
-        
+
+                var numberOfPlayersInTeam = RetrieveUserTeamsPlayers(SelectedUserTeam).Count();
+                var userTeam1 =
+                    from u in db.UserTeams
+                    where u.UserTeamId == SelectedUserTeam.UserTeamId
+                    select u;
+
+                var userTeam = userTeam1.FirstOrDefault();
+
                 var searchForPlayers=
                     from UserTeamPlayers in db.UserTeamPlayers
                     where (UserTeamPlayers.UserTeamId == SelectedUserTeam.UserTeamId) && (UserTeamPlayers.PlayerId == SelectedPlayers.PlayerId)
@@ -92,11 +101,17 @@ namespace BasketballBusinessLayer
 
                 var isPlayerAlreadyInTeam = searchForPlayers.Count();
 
-                //NEED TO ADD BUDGET CONSTRCITIONS AND PLAYER CONSTRICTIONS NO MORE THAN 6 PLAYERS IN ONE TEAM
                 if (isPlayerAlreadyInTeam != 1)
                 {
-                    db.Add(new UserTeamPlayers {UserTeamId = SelectedUserTeam.UserTeamId, PlayerId = SelectedPlayers.PlayerId });
-                    db.SaveChanges();
+                    if(numberOfPlayersInTeam < 6)
+                    if (SelectedPlayers.Price < userTeam.Budget)
+                    {
+                        userTeam.Budget -= SelectedPlayers.Price;
+                        db.UserTeams.Update(userTeam);                 
+                        db.Add(new UserTeamPlayers { UserTeamId = SelectedUserTeam.UserTeamId, PlayerId = SelectedPlayers.PlayerId });
+                        db.SaveChanges();
+                        setSelectedUserTeam(userTeam);
+                    }
                 }
             }
         }
@@ -152,6 +167,7 @@ namespace BasketballBusinessLayer
                     select u;
 
                 SelectedUser = users.FirstOrDefault();
+                
                 var userTeam = new UserTeams { UserId = SelectedUser.UserId, Budget = 100};
                 db.UserTeams.Add(userTeam);
                 db.SaveChanges();
