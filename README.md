@@ -86,10 +86,9 @@ Following Sprint 1, now the goal for this sprint is to build on the MVP and add 
 ### Sprint Retrospective
 
 - **Positives**
-
-  - Completed the Sprint and met all user stories within the sprints "Definition of done"
+- Completed the Sprint and met all user stories within the sprints "Definition of done"
   - Built a lot of confidence with testing databases and also using Entity Framework 
-
+  
 - **Things I Learnt**
 
   - SCRUM was really effective especially in this as I could simply look at the next task for the story and start working on it without wasting time thinking about what to do next
@@ -102,11 +101,34 @@ Following Sprint 1, now the goal for this sprint is to build on the MVP and add 
 
 ### Sprint Goal
 
+Following the completion of Sprint 2, the goal for sprint 3 is to refactor and polish the current application and add some more functionality to the application and completing the following user stories
+- Add Budget Function
+- Add 5/6 Players Function
+- Clean UI
+- Well Designed and Easy To Read Code
+
 ### Output of Sprint Review
 
 #### 	Beginning of Sprint 3
 
+![image-20201006200344227](C:\Users\miahs\AppData\Roaming\Typora\typora-user-images\image-20201006200344227.png)
+
 #### 	End of Sprint 3
+
+![image-20201006200427612](C:\Users\miahs\AppData\Roaming\Typora\typora-user-images\image-20201006200427612.png)
 
 ### Sprint Retrospective
 
+- **Positives**
+
+  - Managed to complete all User stories
+  - Able to complete a functional working application ready for presenting
+
+- **Things I Learnt**
+
+  - More experience with stand-ups and group sprint reviews taught me more about what to say during them
+  - Learnt more about formatting in WPF
+
+- **Action Plan**
+  - Present the application
+  - Plan Sprint 4
