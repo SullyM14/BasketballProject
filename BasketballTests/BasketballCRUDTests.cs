@@ -202,9 +202,10 @@ namespace BasketballTests
                 object selectedUserTeam = _crudManager.MakeNewUserTeam("Testing Team 5");
                 object selectedPlayer = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George", Price = 35 };
                 _crudManager.AddPlayerToUserTeam(selectedPlayer);
+                _crudManager.SetSelectedPlayer(selectedPlayer);
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
-                _crudManager.RemovePlayerFromTeam(selectedPlayer);
+                _crudManager.RemovePlayerFromTeam();
                 var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();
                 Assert.AreEqual(numberOfPlayersBefore - 1, numberOfPlayersAfter);
@@ -221,7 +222,8 @@ namespace BasketballTests
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
                 object selectedPlayer = new Players { PlayerId = 92, FirstName = "Cory", LastName = "Joseph" };
-                _crudManager.RemovePlayerFromTeam(selectedPlayer);
+                _crudManager.SetSelectedPlayer(selectedPlayer);
+                _crudManager.RemovePlayerFromTeam();
                 var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();
                 Assert.AreEqual(numberOfPlayersBefore, numberOfPlayersAfter);

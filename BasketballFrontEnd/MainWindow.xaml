@@ -13,14 +13,14 @@
         <GroupBox x:Name="UserSelectTeams" Margin="317,252,0,0" Background="Aqua" BorderThickness="0">
             <StackPanel>
                 <Button x:Name="NewTeamButton1" Content="New Team" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Left" Click="NewTeamButton_Click" Width="120" Margin="0,0,0,0"/>
-                <ListBox x:Name="ListBoxSelectTeams" Grid.Column="0" SelectionChanged="ListBoxSelectTeams_SelectionChanged" Height="482" Margin="0,10,0,0" Background="Aqua"/>
+                <ListBox x:Name="ListBoxSelectTeams" Grid.Column="0" SelectionChanged="ListBoxSelectTeams_SelectionChanged" Height="482" Margin="0,10,0,0" Background="Aqua" FontSize="22"/>
             </StackPanel>
         </GroupBox>
 
         <GroupBox x:Name="UserTeamDetails" Margin="317,252,0,0" Visibility="Collapsed" Background="Aqua" BorderThickness="0">
             <StackPanel Height="430" Background="Aqua">
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Center">
-                    <ComboBox x:Name="cmbUserTeams" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectionChanged="cmbUserTeams_SelectionChanged" FontSize="22"/>
+                    <ComboBox x:Name="cmbUserTeams" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectionChanged="cmbUserTeams_SelectionChanged" FontSize="18"/>
                     <Button x:Name="NewTeamButton" Content="New Team" FontSize="22" VerticalAlignment="Top" Click="NewTeamButton_Click" Width="120" Margin="100,0,0,0"/>
                     <Button x:Name="RemoveTeamButton" Content="Remove Team" FontSize="22" VerticalAlignment="Top" Width="149" Click="RemoveTeamButton_Click" Margin="100,0,0,0"/>
                 </StackPanel>
@@ -30,7 +30,7 @@
                     <TextBox x:Name="TextBudget" BorderThickness="0" FontSize="24" TextAlignment="Center" TextWrapping="Wrap" Width="224" IsEnabled="False" Height="36" Margin="10,0,0,0"/>
                 </StackPanel>
 
-                <ListBox x:Name="ListBoxUserTeams" Grid.Column="0" SelectionChanged="ListBoxUserTeams_SelectionChanged" Height="304" Background="Aqua"/>
+                <ListBox x:Name="ListBoxUserTeams" Grid.Column="0" SelectionChanged="ListBoxUserTeams_SelectionChanged" Height="304" Background="Aqua" FontSize="22"/>
             </StackPanel>
         </GroupBox>
 

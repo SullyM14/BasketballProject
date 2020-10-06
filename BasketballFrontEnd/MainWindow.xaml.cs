@@ -127,9 +127,8 @@ namespace BasketballFrontEnd
                 try
                 {
                     _crud.AddPlayerToUserTeam(ListBoxNbaPlayers.SelectedItem);
-                    MakePlayerFieldsVisible();
-                    RemoveOrAddPlayerVisibleCheck(ListBoxNbaPlayers.SelectedItem);
-                    PopulatePlayerFields();
+                    MakeMyTeamFieldsVisible();
+                    PopulateUserTeam();
                     MessageBox.Show("Player Added Successfully", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (OutOfBudgetException)
@@ -163,7 +162,7 @@ namespace BasketballFrontEnd
         {
             if (ListBoxNbaPlayers.SelectedItem != null)
             {
-                _crud.RemovePlayerFromTeam(ListBoxNbaPlayers.SelectedItem);
+                _crud.RemovePlayerFromTeam();
                 MakeMyTeamFieldsVisible();
                 PopulateUserTeam();
                 MessageBox.Show("Player Removed Successfully", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -172,7 +171,7 @@ namespace BasketballFrontEnd
             else {
                 if(ListBoxUserTeams.SelectedItem != null)
                 {
-                    _crud.RemovePlayerFromTeam(ListBoxUserTeams.SelectedItem);
+                    _crud.RemovePlayerFromTeam();
                     MakeMyTeamFieldsVisible();
                     PopulateUserTeam();
                     MessageBox.Show("Player Removed Successfully", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -210,7 +209,6 @@ namespace BasketballFrontEnd
             PopulateUserTeamComboBox();
             MessageBox.Show("New Team Added successfully", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-
 
         private void cmbUserTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
