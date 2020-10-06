@@ -18,26 +18,6 @@ namespace BasketballTests
             using (var db = new BasketballProjectContext())
             {
                 _crudManager.SelectedUser = new Users { UserId = 1 };
-                object selectedTeam = new UserTeams { UserTeamId = 9004, UserId = 1, Budget = 100 };
-                _crudManager.setSelectedUserTeam(selectedTeam);
-                _crudManager.ResetBudget();
-                object selectedItem = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James", Price = 40 };
-                _crudManager.AddPlayerToUserTeam(selectedItem);
-                object selectedItem2 = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George", Price = 35};
-                _crudManager.AddPlayerToUserTeam(selectedItem2);
-                object selectedItem3 = new Players { PlayerId = 11, FirstName = "Patrick", LastName = "Beverley", Price = 1};
-                _crudManager.RemovePlayerFromTeam(selectedItem3);
-
-                object selectedUserTeam = new UserTeams { UserTeamId = 9006, UserId = 1, Budget = 100 };
-                _crudManager.setSelectedUserTeam(selectedUserTeam);
-                _crudManager.ResetBudget();
-                var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
-                object selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James", Price = 40 };
-                _crudManager.RemovePlayerFromTeam(selectedPlayer);
-                object selectedPlayer1 = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George", Price = 35 };
-                _crudManager.RemovePlayerFromTeam(selectedPlayer1);
-                object selectedPlayer2 = new Players { PlayerId = 17, FirstName = "Nikola", LastName = "Jokic", Price = 40 };
-                _crudManager.RemovePlayerFromTeam(selectedPlayer2);
             }
         }
 
@@ -135,7 +115,7 @@ namespace BasketballTests
         {
             using (var db = new BasketballProjectContext())
             {
-                object selectedUserTeam = new UserTeams {UserTeamId = 9004, UserId = 1, Budget = 100 };
+                object selectedUserTeam = _crudManager.MakeNewUserTeam("Testing Team 1");
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
                 object selectedItem = new Players { PlayerId = 11, FirstName = "Patrick", LastName = "Beverley", Price = 1};
@@ -143,6 +123,7 @@ namespace BasketballTests
                 var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();
                 Assert.AreEqual(numberOfPlayersBefore + 1, numberOfPlayersAfter);
+                _crudManager.RemoveUserTeam();
             }
         }
 
@@ -151,23 +132,25 @@ namespace BasketballTests
         {
             using (var db = new BasketballProjectContext())
             {
-                object selectedUserTeam = new UserTeams { UserTeamId = 9004, UserId = 1, Budget = 100 };
+                object selectedUserTeam = _crudManager.MakeNewUserTeam("Testing Team 2");
+                object selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James", Price = 40 };
+                _crudManager.AddPlayerToUserTeam(selectedPlayer);
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
-                object selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James", Price = 40};
                 _crudManager.AddPlayerToUserTeam(selectedPlayer);
                 var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();
                 Assert.AreEqual(numberOfPlayersBefore, numberOfPlayersAfter);
+                _crudManager.RemoveUserTeam();
             }
         }
 
         [Test]
-        public void WhenTryingThirdPLayerAddedIsOverBudget_ThirdPlayerIsNotAddedAndNumberOfPlayersIsOnlyPlus2()
+        public void WhenTryingThirdPLayerAddedIsOverBudget_ThirdPlayerIsNotAddedAndOutOfBudgetExceptionIsThrown()
         {
             using (var db = new BasketballProjectContext())
             {
-                object selectedUserTeam = new UserTeams { UserTeamId = 9006, UserId = 1, Budget = 100 };
+                object selectedUserTeam = _crudManager.MakeNewUserTeam("Testing Team 3");
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
                 object selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James", Price = 40 };
@@ -175,10 +158,8 @@ namespace BasketballTests
                 object selectedPlayer1 = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George", Price = 35 };
                 _crudManager.AddPlayerToUserTeam(selectedPlayer1);
                 object selectedPlayer2 = new Players { PlayerId = 17, FirstName = "Nikola", LastName = "Jokic", Price = 40 };
-                _crudManager.AddPlayerToUserTeam(selectedPlayer2);
-                var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
-                var numberOfPlayersAfter = getPlayers2.Count();
-                Assert.AreEqual(numberOfPlayersBefore + 2, numberOfPlayersAfter);
+                Assert.Throws<OutOfBudgetException>(() => _crudManager.AddPlayerToUserTeam(selectedPlayer2));
+                _crudManager.RemoveUserTeam();
             }
         }
 
@@ -187,7 +168,7 @@ namespace BasketballTests
         {
             using (var db = new BasketballProjectContext())
             {
-                var team = _crudManager.MakeNewUserTeam();
+                var team = _crudManager.MakeNewUserTeam("Testing Team 4");
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(team);
                 var numberOfPlayersBefore = getPlayers.Count();
                 object selectedPlayer = new Players { PlayerId = 2, FirstName = "JaVale", LastName = "Mcgee", Price = 5};
@@ -207,11 +188,8 @@ namespace BasketballTests
                 _crudManager.AddPlayerToUserTeam(selectedPlayer5);
 
                 object selectedPlayer6 = new Players { PlayerId = 46, FirstName = "Tony", LastName = "Bradley", Price = 5};
-                _crudManager.AddPlayerToUserTeam(selectedPlayer6);
 
-                var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(team);
-                var numberOfPlayersAfter = getPlayers2.Count();
-                Assert.AreEqual(numberOfPlayersBefore + 6, numberOfPlayersAfter);
+                Assert.Throws<TooManyPlayerException>(() => _crudManager.AddPlayerToUserTeam(selectedPlayer6));
                 _crudManager.RemoveUserTeam();
             }
         }
@@ -221,14 +199,16 @@ namespace BasketballTests
         {
             using (var db = new BasketballProjectContext())
             {
-                object selectedUserTeam = new UserTeams { UserTeamId = 9004, UserId = 1, Budget = 100 };
+                object selectedUserTeam = _crudManager.MakeNewUserTeam("Testing Team 5");
+                object selectedPlayer = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George", Price = 35 };
+                _crudManager.AddPlayerToUserTeam(selectedPlayer);
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
-                object selectedPlayer = new Players { PlayerId = 10, FirstName = "Paul", LastName = "George", Price = 35 };
                 _crudManager.RemovePlayerFromTeam(selectedPlayer);
                 var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();
                 Assert.AreEqual(numberOfPlayersBefore - 1, numberOfPlayersAfter);
+                _crudManager.RemoveUserTeam();
             }
         }
 
@@ -237,7 +217,7 @@ namespace BasketballTests
         {
             using (var db = new BasketballProjectContext())
             {
-                object selectedUserTeam = new UserTeams { UserId = 1, UserTeamId = 1 };
+                object selectedUserTeam = _crudManager.MakeNewUserTeam("Testing Team 6");
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
                 object selectedPlayer = new Players { PlayerId = 92, FirstName = "Cory", LastName = "Joseph" };
@@ -245,29 +225,31 @@ namespace BasketballTests
                 var getPlayers2 = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersAfter = getPlayers2.Count();
                 Assert.AreEqual(numberOfPlayersBefore, numberOfPlayersAfter);
+                _crudManager.RemoveUserTeam();
             }
         }
 
         [Test]
         public void WhenNewTeamAdded_NumberOfUserTeamsIncreasedByOne()
         {
-            //_crudManager.MakeNewUserTeam();
             var UserTeamsBefore = _crudManager.AllUserTeams().Count();
-            var newTeam = _crudManager.MakeNewUserTeam();
+            var newTeam = _crudManager.MakeNewUserTeam("Testing Team 7");
             var UserTeamsAfter = _crudManager.AllUserTeams().Count();
             Assert.AreEqual(UserTeamsBefore + 1, UserTeamsAfter);
+            _crudManager.RemoveUserTeam();
         }
 
         [Test]
         public void WhenATeamIsRemoved_NumberOfTeamsDecreasesByOne()
         {
-            var newTeam1 = _crudManager.MakeNewUserTeam();
+            var newTeam1 = _crudManager.MakeNewUserTeam("Testing Team 8");
             _crudManager.setSelectedUserTeam(newTeam1);
             var userTeamsBefore = _crudManager.AllUserTeams().Count();
             _crudManager.RemoveUserTeam();
             var userTeamsAfter = _crudManager.AllUserTeams().Count();
 
             Assert.AreEqual(userTeamsBefore - 1, userTeamsAfter);
+            _crudManager.RemoveUserTeam();
         }
 
         [Test]
