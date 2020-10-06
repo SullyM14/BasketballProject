@@ -132,3 +132,11 @@ Following the completion of Sprint 2, the goal for sprint 3 is to refactor and p
 - **Action Plan**
   - Present the application
   - Plan Sprint 4
+
+# Class Diagram
+
+- Class Diagram detailing the relationships mapped between the different classes due to the database relations located in the following
+  - BasketballProject/BasketballProject/ClassDiagram.cd
+
+# Individual Retrospective
+
