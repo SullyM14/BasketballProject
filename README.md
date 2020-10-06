@@ -64,7 +64,14 @@ The aim for this project is to create a 3 tier application that allows different
 
 # Sprint 2
 
-### Sprint Goal
+#### Sprint Goal
+
+Following Sprint 1, now the goal for this sprint is to build on the MVP and add more functionality to the application including the following
+- Add Players to Team
+- Remove Players from Team
+- Choose Team
+- Make A Team
+- Have a full complete list of NBA Players and Teams
 
 ### Output of Sprint Review
 
@@ -90,3 +97,16 @@ The aim for this project is to create a 3 tier application that allows different
 - **Action Plan**
   - Continue with Sprint 3
   - Nothing unfinished in Sprint 2
+
+# Sprint 3
+
+### Sprint Goal
+
+### Output of Sprint Review
+
+#### 	Beginning of Sprint 3
+
+#### 	End of Sprint 3
+
+### Sprint Retrospective
+
