@@ -185,7 +185,7 @@ namespace BasketballBusinessLayer
             }
         }
 
-        public object MakeNewUserTeam()
+        public object MakeNewUserTeam(string text)
         {
             using(var db = new BasketballProjectContext())
             {
@@ -196,7 +196,7 @@ namespace BasketballBusinessLayer
 
                 SelectedUser = users.FirstOrDefault();
                 
-                var userTeam = new UserTeams { UserId = SelectedUser.UserId, Budget = 100};
+                var userTeam = new UserTeams { UserId = SelectedUser.UserId, Budget = 100, TeamName = text};
                 db.UserTeams.Add(userTeam);
                 db.SaveChanges();
                 db.Entry(userTeam).GetDatabaseValues();

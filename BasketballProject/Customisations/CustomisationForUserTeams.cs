@@ -8,7 +8,7 @@ namespace BasketballProject
     {
         public override string ToString()
         {
-            return $"User Team Number: {UserTeamId}";
+            return $"{TeamName}";
         }
     }
 }

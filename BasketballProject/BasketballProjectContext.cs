@@ -110,6 +110,10 @@ namespace BasketballProject
 
                 entity.Property(e => e.Budget).HasColumnType("decimal(18, 1)");
 
+                entity.Property(e => e.TeamName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.UserTeams)
                     .HasForeignKey(d => d.UserId)

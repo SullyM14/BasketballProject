@@ -153,6 +153,7 @@ namespace BasketballFrontEnd
         {
             //Collapse player details fields
             PlayerDetails.Visibility = Visibility.Collapsed;
+            NewTeamCreation.Visibility = Visibility.Collapsed;
             //Make the user team details fields visible
             UserTeamDetails.Visibility = Visibility.Visible;
 
@@ -194,14 +195,22 @@ namespace BasketballFrontEnd
 
         private void NewTeamButton_Click(object sender, RoutedEventArgs e)
         {
-            var newTeam = _crud.MakeNewUserTeam();
+            NewTeamCreation.Visibility = Visibility.Visible;
+        }
+
+        private void CreateTeamButton_Click(object sender, RoutedEventArgs e)
+        {
+            var newTeam = _crud.MakeNewUserTeam(TeamName.Text);
             ListBoxUserTeams.ItemsSource = _crud.RetrieveUserTeamsPlayers(newTeam);
             ListBoxSelectTeams.Visibility = Visibility.Collapsed;
             TextBudget.Text = _crud.SelectedUserTeam.Budget.ToString();
+            NewTeamCreation.Visibility = Visibility.Visible;
             PopulateListNbaTeams();
             MakeMyTeamFieldsVisible();
+            PopulateUserTeamComboBox();
             MessageBox.Show("New Team Added successfully", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
 
         private void cmbUserTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -234,5 +243,7 @@ namespace BasketballFrontEnd
             PlayerDetails.Visibility = Visibility.Collapsed;
             UserTeamDetails.Visibility = Visibility.Collapsed;
         }
+
+
     }
 }

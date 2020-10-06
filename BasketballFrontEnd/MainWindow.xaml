@@ -11,7 +11,10 @@
         <ListBox x:Name="ListBoxNbaPlayers" Grid.Column="0" SelectionChanged="ListBoxNbaPlayers_SelectionChanged" Margin="298,0,0,518" Background="Aqua"/>
 
         <GroupBox x:Name="UserSelectTeams" Margin="317,252,0,0" Background="Aqua" BorderThickness="0">
-            <ListBox x:Name="ListBoxSelectTeams" Grid.Column="0" SelectionChanged="ListBoxSelectTeams_SelectionChanged" Height="482" Margin="-9,0,0,0" Background="Aqua"/>
+            <StackPanel>
+                <Button x:Name="NewTeamButton1" Content="New Team" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Left" Click="NewTeamButton_Click" Width="120" Margin="0,0,0,0"/>
+                <ListBox x:Name="ListBoxSelectTeams" Grid.Column="0" SelectionChanged="ListBoxSelectTeams_SelectionChanged" Height="482" Margin="0,10,0,0" Background="Aqua"/>
+            </StackPanel>
         </GroupBox>
 
         <GroupBox x:Name="UserTeamDetails" Margin="317,252,0,0" Visibility="Collapsed" Background="Aqua" BorderThickness="0">
@@ -26,7 +29,7 @@
                     <Label x:Name="TitleBudget"  Content="Budget:" FontSize="24" HorizontalContentAlignment="Center" Margin="100,0,0,0"/>
                     <TextBox x:Name="TextBudget" BorderThickness="0" FontSize="24" TextAlignment="Center" TextWrapping="Wrap" Width="224" IsEnabled="False" Height="36" Margin="10,0,0,0"/>
                 </StackPanel>
-                
+
                 <ListBox x:Name="ListBoxUserTeams" Grid.Column="0" SelectionChanged="ListBoxUserTeams_SelectionChanged" Height="304" Background="Aqua"/>
             </StackPanel>
         </GroupBox>
@@ -61,6 +64,15 @@
                     <TextBox x:Name="TextPrice"  FontSize="24" BorderThickness="0" Text="TextBox" TextWrapping="Wrap" Width="120" IsEnabled="False" Margin="333,0,0,0"/>
                 </StackPanel>
 
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox x:Name="NewTeamCreation" Margin="317,252,0,0" Background="Aqua" BorderThickness="0" Visibility="Collapsed">
+            <StackPanel>
+                <Label x:Name="LabelTitleNewTeam" Content="Create New Team" FontSize="24" HorizontalAlignment="Center"/>
+                <Label x:Name="LabelTeamName" Content="New Team Name" FontSize="24" HorizontalAlignment="Center" Margin="0,50,0,0"/>
+                <TextBox x:Name="TeamName" FontSize="24" BorderThickness="0" TextAlignment="Center" TextWrapping="Wrap" Width="158" Margin="0,30,0,0"/>
+                <Button x:Name="NewTeamButton2" Content="Create Team" FontSize="22" HorizontalAlignment="Center" Click="CreateTeamButton_Click" Width="206" Margin="0,20,0,0"/>
             </StackPanel>
         </GroupBox>
     </Grid>
