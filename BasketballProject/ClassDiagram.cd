@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="BasketballProject.Nbateams">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAEAAAAAAABAAAgAAAgAAAACAAAgAA=</HashCode>
+      <FileName>Customisations\CustomiseNbaTeams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasketballProject.Players">
+    <Position X="3.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAEAAAQAAgAAkAEAAAAACAAAAAEAAEAIIBQAgAEg=</HashCode>
+      <FileName>Customisations\CustomisePlayers.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Team" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="UserTeamPlayers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BasketballProject.Users">
+    <Position X="12.75" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAQAAAAgABAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>Users.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="UserTeams" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BasketballProject.UserTeams">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAABAAAAAAEAAAAAAgBAAAAAEAAAAAAAAAAgAA=</HashCode>
+      <FileName>Customisations\CustomisationForUserTeams.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="UserTeamPlayers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BasketballProject.UserTeamPlayers">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAAAAAAAAAAAAAABAAAAAAAAAAIAQAAAAA=</HashCode>
+      <FileName>UserTeamPlayers.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Player" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
