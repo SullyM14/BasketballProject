@@ -114,13 +114,21 @@ namespace BasketballBusinessLayer
                 if (isPlayerAlreadyInTeam != 1)
                 {
                     if(numberOfPlayersInTeam < 6)
-                    if (SelectedPlayers.Price < userTeam.Budget)
-                    {
+                        if (SelectedPlayers.Price < userTeam.Budget)
+                        {
                         userTeam.Budget -= SelectedPlayers.Price;
                         db.UserTeams.Update(userTeam);                 
                         db.Add(new UserTeamPlayers { UserTeamId = SelectedUserTeam.UserTeamId, PlayerId = SelectedPlayers.PlayerId });
                         db.SaveChanges();
                         setSelectedUserTeam(userTeam);
+                        }
+                        else
+                        {
+                            throw new OutOfBudgetException();
+                        }
+                    else
+                    {
+                        throw new TooManyPlayerException();
                     }
                 }
             }
@@ -161,9 +169,16 @@ namespace BasketballBusinessLayer
                          where (UserTeamPlayers.UserTeamId == SelectedUserTeam.UserTeamId) && (UserTeamPlayers.PlayerId == SelectedPlayers.PlayerId)
                          select UserTeamPlayers;
 
-                    SelectedUserTeam.Budget += SelectedPlayers.Price;
-                    db.UserTeams.Update(SelectedUserTeam);
-                    db.SaveChanges();
+                    //if (SelectedUserTeam.Budget < 100)
+                    //{
+                        SelectedUserTeam.Budget += SelectedPlayers.Price;
+                        db.UserTeams.Update(SelectedUserTeam);
+                        db.SaveChanges();
+                    //}
+                    //else
+                    //{
+                    //    ResetBudget();
+                    //}
                     db.UserTeamPlayers.RemoveRange(selectedPlayer);
                     db.SaveChanges();
                 }

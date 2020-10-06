@@ -168,8 +168,6 @@ namespace BasketballTests
             using (var db = new BasketballProjectContext())
             {
                 object selectedUserTeam = new UserTeams { UserTeamId = 9006, UserId = 1, Budget = 100 };
-                //_crudManager.setSelectedUserTeam(selectedUserTeam);
-                //_crudManager.ResetBudget();
                 var getPlayers = _crudManager.RetrieveUserTeamsPlayers(selectedUserTeam);
                 var numberOfPlayersBefore = getPlayers.Count();
                 object selectedPlayer = new Players { PlayerId = 1, FirstName = "Lebron", LastName = "James", Price = 40 };

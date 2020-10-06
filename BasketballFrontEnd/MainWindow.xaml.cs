@@ -124,11 +124,22 @@ namespace BasketballFrontEnd
         {
             if (ListBoxNbaPlayers.SelectedItem != null)
             {
-                _crud.AddPlayerToUserTeam(ListBoxNbaPlayers.SelectedItem);
-                MakePlayerFieldsVisible();
-                RemoveOrAddPlayerVisibleCheck(ListBoxNbaPlayers.SelectedItem);
-                PopulatePlayerFields();
-                MessageBox.Show("Player Added Successfully", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                try
+                {
+                    _crud.AddPlayerToUserTeam(ListBoxNbaPlayers.SelectedItem);
+                    MakePlayerFieldsVisible();
+                    RemoveOrAddPlayerVisibleCheck(ListBoxNbaPlayers.SelectedItem);
+                    PopulatePlayerFields();
+                    MessageBox.Show("Player Added Successfully", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (OutOfBudgetException)
+                {
+                    MessageBox.Show("Out Of Budget", "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                catch (TooManyPlayerException)
+                {
+                    MessageBox.Show("Too Many Players", "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
