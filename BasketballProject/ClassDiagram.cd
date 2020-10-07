@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="BasketballProject.Nbateams">
-    <Position X="0.5" Y="0.75" Width="1.5" />
+    <Position X="0.5" Y="3.25" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAEAAAAAAABAAAgAAAgAAAACAAAgAA=</HashCode>
       <FileName>Customisations\CustomiseNbaTeams.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BasketballProject.Players">
-    <Position X="3.5" Y="0.5" Width="2.75" />
+    <Position X="4.5" Y="3" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AQAAAEAAAQAAgAAkAEAAAAACAAAAAEAAEAIIBQAgAEg=</HashCode>
       <FileName>Customisations\CustomisePlayers.cs</FileName>
@@ -21,7 +21,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="BasketballProject.Users">
-    <Position X="12.75" Y="1" Width="2.25" />
+    <Position X="11" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAAAQAAAAgABAAAAAACAAAAAAAAAAg=</HashCode>
       <FileName>Users.cs</FileName>
@@ -31,7 +31,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="BasketballProject.UserTeams">
-    <Position X="10" Y="1.5" Width="1.5" />
+    <Position X="7.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAABAAAABAAAAAAEAAAAAAgBAAAAAEAAAAAAAAAAgAA=</HashCode>
       <FileName>Customisations\CustomisationForUserTeams.cs</FileName>
@@ -41,7 +41,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="BasketballProject.UserTeamPlayers">
-    <Position X="7" Y="1.75" Width="1.5" />
+    <Position X="3.75" Y="0.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAABAAAAAAAAAAAAAAABAAAAAAAAAAIAQAAAAA=</HashCode>
       <FileName>UserTeamPlayers.cs</FileName>
