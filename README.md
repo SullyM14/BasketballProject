@@ -36,7 +36,7 @@ The aim for this project is to create a 3 tier application that allows different
 
 #### Beginning of Sprint 1
 
-![C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint1Beginning.PNG](C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint1Beginning.PNG)
+![C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint1Beginning.PNG](Sprints\Sprint1Beginning.PNG)
 
 
 
