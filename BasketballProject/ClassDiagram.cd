@@ -6,6 +6,9 @@
       <HashCode>AAAAAAAAAAAgAAAEAAAAAAABAAAgAAAgAAAACAAAgAA=</HashCode>
       <FileName>Customisations\CustomiseNbaTeams.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Players" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="BasketballProject.Players">
     <Position X="4.5" Y="3" Width="2.25" />
@@ -36,6 +39,9 @@
       <HashCode>AAABAAAABAAAAAAEAAAAAAgBAAAAAEAAAAAAAAAAgAA=</HashCode>
       <FileName>Customisations\CustomisationForUserTeams.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="UserTeamPlayers" />
     </ShowAsCollectionAssociation>
@@ -48,6 +54,7 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Player" />
+      <Property Name="UserTeam" />
     </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -36,11 +36,13 @@ The aim for this project is to create a 3 tier application that allows different
 
 #### Beginning of Sprint 1
 
-![image-20201002094711695](C:\Users\miahs\AppData\Roaming\Typora\typora-user-images\image-20201002094711695.png)
+![](C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint1Beginning.PNG)
+
+
 
 #### End of Sprint 1
 
-![image-20201002094844169](C:\Users\miahs\AppData\Roaming\Typora\typora-user-images\image-20201002094844169.png)
+![](C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint1End.PNG)
 
 ### Sprint Retrospective
 
@@ -77,11 +79,11 @@ Following Sprint 1, now the goal for this sprint is to build on the MVP and add 
 
 #### Beginning of Sprint 2
 
-![image-20201005150915889](C:\Users\miahs\AppData\Roaming\Typora\typora-user-images\image-20201005150915889.png)
+![](C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint2Beginning.PNG)
 
 #### End of Sprint 2
 
-![image-20201005151057138](C:\Users\miahs\AppData\Roaming\Typora\typora-user-images\image-20201005151057138.png)
+![](C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint2End.PNG)
 
 ### Sprint Retrospective
 
@@ -111,11 +113,11 @@ Following the completion of Sprint 2, the goal for sprint 3 is to refactor and p
 
 #### 	Beginning of Sprint 3
 
-![image-20201006200344227](C:\Users\miahs\AppData\Roaming\Typora\typora-user-images\image-20201006200344227.png)
+![](C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint3Beginning.PNG)
 
 #### 	End of Sprint 3
 
-![image-20201006200427612](C:\Users\miahs\AppData\Roaming\Typora\typora-user-images\image-20201006200427612.png)
+![](C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint3End.PNG)
 
 ### Sprint Retrospective
 
@@ -138,5 +140,24 @@ Following the completion of Sprint 2, the goal for sprint 3 is to refactor and p
 - Class Diagram detailing the relationships mapped between the different classes due to the database relations located in the following
   - BasketballProject/BasketballProject/ClassDiagram.cd
 
-# Individual Retrospective
+![](C:\Users\miahs\source\repos\BasketballProject\Sprints\ClassDiagram.PNG)
 
+# Project Retrospective
+
+#### What Have I Learnt?
+
+- Learnt how to use SCRUM to mange a project really efficiently by working in smaller increments
+- Having more confidence in my ability to code
+- Using GitHub and the importance of committing regularly
+- Learnt also more about implementing Entity Framework and using WPF's
+
+#### What Would I Do differently next time?
+
+- Definitely use a model first design method for the database as this allows me more flexibility and is easier to use when making further changes to your initial design which was possible with database fist, but was a little drawn out and confusing at times.
+- Making more use of the power of WPF and the creativity it allows you to have
+
+#### Next Steps in the Project
+
+- Adding a Login and register functionality with expansive data validation checks
+- Adding a Scoring method for players allowing users to simulate weeks of basketball and gaining points for their team
+- Adding a filter NBA players method to allow users to sort players by different stats
