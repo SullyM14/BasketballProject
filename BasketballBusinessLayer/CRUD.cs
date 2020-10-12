@@ -90,6 +90,18 @@ namespace BasketballBusinessLayer
             SelectedPlayers = (Players)selectedItem;
         }
 
+        public bool CheckBudget()
+        {
+            if (SelectedPlayers.Price <= SelectedUserTeam.Budget)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void AddPlayerToUserTeam(object selectedItem)
         {
             using(var db = new BasketballProjectContext())
@@ -121,7 +133,7 @@ namespace BasketballBusinessLayer
                 if (isPlayerAlreadyInTeam != 1)
                 {
                     if(numberOfPlayersInTeam < 6)
-                        if (SelectedPlayers.Price <= userTeam.Budget)
+                        if (CheckBudget() == true)
                         {
                             //Update budget and then add the player
                             userTeam.Budget -= SelectedPlayers.Price;
