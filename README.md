@@ -36,13 +36,13 @@ The aim for this project is to create a 3 tier application that allows different
 
 #### Beginning of Sprint 1
 
-![Sprint1Beginning.PNG](Sprint1Beginning.PNG)
+![Sprint1Beginning](Sprint1Beginning.PNG)
 
 
 
 #### End of Sprint 1
 
-![](C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint1End.PNG)
+![Sprint1End](Sprint1End.PNG)
 
 ### Sprint Retrospective
 
@@ -62,8 +62,6 @@ The aim for this project is to create a 3 tier application that allows different
 
   - No user stories unfinished in Sprint 1
 
-    
-
 # Sprint 2
 
 #### Sprint Goal
@@ -79,11 +77,11 @@ Following Sprint 1, now the goal for this sprint is to build on the MVP and add 
 
 #### Beginning of Sprint 2
 
-![](C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint2Beginning.PNG)
+![Sprint2Beginning](Sprint2Beginning.PNG)
 
 #### End of Sprint 2
 
-![](C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint2End.PNG)
+![Sprint2End](Sprint2End.PNG)
 
 ### Sprint Retrospective
 
@@ -113,11 +111,11 @@ Following the completion of Sprint 2, the goal for sprint 3 is to refactor and p
 
 #### 	Beginning of Sprint 3
 
-![](C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint3Beginning.PNG)
+![Sprint3Beginning](Sprint3Beginning.PNG)
 
 #### 	End of Sprint 3
 
-![](C:\Users\miahs\source\repos\BasketballProject\Sprints\Sprint3End.PNG)
+![Sprint3End](Sprint3End.PNG)
 
 ### Sprint Retrospective
 
@@ -140,7 +138,7 @@ Following the completion of Sprint 2, the goal for sprint 3 is to refactor and p
 - Class Diagram detailing the relationships mapped between the different classes due to the database relations located in the following
   - BasketballProject/BasketballProject/ClassDiagram.cd
 
-![](C:\Users\miahs\source\repos\BasketballProject\Sprints\ClassDiagram.PNG)
+![ClassDiagram](ClassDiagram.PNG)
 
 # Project Retrospective
 
